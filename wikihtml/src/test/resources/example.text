@@ -1,0 +1,209 @@
+
+== Example of wiki text ==
+
+This is just an example. It is not very ''long'', but '''useful''' enough and also '''''interesting'''''.
+
+It is possible to end a line without closing '''the quotes
+, but it is better not to do it.
+
+Two lines
+together
+are not considered different lines in the output.
+
+[[Other documents]] can be reached via hyperlinks, using a [[other document|link]].
+
+It is possible to add [http://www.google.com links], directly like this one: http://www.google.com , 
+or without description like [http://www.google.com]. The [http://en.wikipedia.org/wiki/Letter_case link] preserves the letter case. 
+
+Note:
+&#x003d;= This text is not a title ==
+
+
+=== Lists ===
+
+==== Unordered lists ====
+
+It is possible to write lists:
+
+* first thing
+* second thing
+* third thing
+** first sub-item
+*** first sub-sub-item
+** second sub-item
+
+* new thing
+
+==== Ordered lists ====
+
+A list of ordered items
+
+# one
+# two
+# three
+## three one
+## three two
+### three two one
+## three three
+# four
+
+
+==== Tabs ====
+
+:one tab
+::two tabs
+:::three tabs
+::two tabs
+:one tab
+
+
+- - -
+
+== Time variables ==
+
+{||
+'''Wiki variable'''	'''Value'''	'''Description'''
+<nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki>	{{CURRENTDAY}}	Displays the current day in numeric form.
+<nowiki>{{</nowiki>CURRENTDAY2<nowiki>}}</nowiki>	{{CURRENTDAY2}}	Same as <nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki>, but with leading zero (01 .. 31).
+<nowiki>{{</nowiki>CURRENTDAYNAME<nowiki>}}</nowiki>	{{CURRENTDAYNAME}}	Name of the day in the language of the project or English.
+<nowiki>{{</nowiki>CURRENTDOW<nowiki>}}</nowiki>	{{CURRENTDOW}}	Same as <nowiki>{{</nowiki>CURRENTDAYNAME<nowiki>}}</nowiki>, but as a number (0=Sunday, 1=Monday...).
+<nowiki>{{</nowiki>CURRENTMONTH<nowiki>}}</nowiki>	{{CURRENTMONTH}}	The number 01 .. 12 of the month.
+<nowiki>{{</nowiki>CURRENTMONTHABBREV<nowiki>}}</nowiki>	{{CURRENTMONTHABBREV}}	Same as <nowiki>{{</nowiki>CURRENTMONTH<nowiki>}}</nowiki>, but in abbreviated form as Jan .. Dec.
+<nowiki>{{</nowiki>CURRENTMONTHNAME<nowiki>}}</nowiki>	{{CURRENTMONTHNAME}}	Same as <nowiki>{{</nowiki>CURRENTMONTH<nowiki>}}</nowiki>, but in named form January .. December.
+<nowiki>{{</nowiki>CURRENTTIME<nowiki>}}</nowiki>	{{CURRENTTIME}}	The current time (00:00 .. 23:59).
+<nowiki>{{</nowiki>CURRENTHOUR<nowiki>}}</nowiki>	{{CURRENTHOUR}}	The current hour (00 .. 23).
+<nowiki>{{</nowiki>CURRENTWEEK<nowiki>}}</nowiki>	{{CURRENTWEEK}}	Number of the current week (1-53) according to ISO 8601 with no leading zero.
+<nowiki>{{</nowiki>CURRENTYEAR<nowiki>}}</nowiki>	{{CURRENTYEAR}}	Returns the current year.
+<nowiki>{{</nowiki>CURRENTTIMESTAMP<nowiki>}}</nowiki>	{{CURRENTTIMESTAMP}}	ISO 8601 time stamp
+||}
+
+{||
+'''Wiki variable'''	'''Value'''	'''Description'''
+<nowiki>{{</nowiki>LOCALDAY<nowiki>}}</nowiki>	{{LOCALDAY}}	Displays the local day of the month in numeric form.
+<nowiki>{{</nowiki>LOCALDAY2<nowiki>}}</nowiki>	{{LOCALDAY2}}	Same as <nowiki>{{</nowiki>LOCALDAY<nowiki>}}</nowiki>, but with a leading zero (01 .. 31).
+<nowiki>{{</nowiki>LOCALDAYNAME<nowiki>}}</nowiki>	{{LOCALDAYNAME}}	Name of the day in the language of the project or English.
+<nowiki>{{</nowiki>LOCALDOW<nowiki>}}</nowiki>	{{LOCALDOW}}	Same as <nowiki>{{</nowiki>LOCALDAYNAME<nowiki>}}</nowiki>, but as a number (0=Sunday, 1=Monday...).
+<nowiki>{{</nowiki>LOCALMONTH<nowiki>}}</nowiki>	{{LOCALMONTH}}	The number 01 .. 12 of the month.
+<nowiki>{{</nowiki>LOCALMONTHABBREV<nowiki>}}</nowiki>	{{LOCALMONTHABBREV}}	Same as <nowiki>{{</nowiki>LOCALMONTH<nowiki>}}</nowiki>, but in abbreviated form as Jan .. Dec.
+<nowiki>{{</nowiki>LOCALMONTHNAME<nowiki>}}</nowiki>	{{LOCALMONTHNAME}}	Same as <nowiki>{{</nowiki>LOCALMONTH<nowiki>}}</nowiki>, but in named form as January .. December.
+<nowiki>{{</nowiki>LOCALTIME<nowiki>}}</nowiki>	{{LOCALTIME}}	The local time (00:00 .. 23:59).
+<nowiki>{{</nowiki>LOCALHOUR<nowiki>}}</nowiki>	{{LOCALHOUR}}	The local hour (00 .. 23).
+<nowiki>{{</nowiki>LOCALWEEK<nowiki>}}</nowiki>	{{LOCALWEEK}}	Number of the local week (1-53) according to ISO 8601 with no leading zero.
+<nowiki>{{</nowiki>LOCALYEAR<nowiki>}}</nowiki>	{{LOCALYEAR}}	Returns the local year.
+<nowiki>{{</nowiki>LOCALTIMESTAMP<nowiki>}}</nowiki>	{{LOCALTIMESTAMP}}	ISO 8601 time stamp
+||}
+
+- - -
+
+== Examples of nowiki ==
+
+This is an example of nowiki.
+
+* <nowiki>'''</nowiki>bold<nowiki>'''</nowiki> = '''bold'''
+
+
+<nowiki>*</nowiki> this is not an item list
+
+<nowiki>#</nowiki> this is not an ordered list
+
+<nowiki>:</nowiki> this is not a tab
+
+<nowiki>''</nowiki>this text is not in italics<nowiki>''</nowiki>
+
+<nowiki>'''</nowiki>this text is not in bold<nowiki>'''</nowiki>
+
+<nowiki>{{</nowiki>this is not a template<nowiki>}}</nowiki>
+
+:<nowiki>#</nowiki> is a number sign
+:<nowiki>&</nowiki> is an ampersand
+:<nowiki>'</nowiki> is an apostrophe 
+:<nowiki>*</nowiki> is an asterisk
+:<nowiki>-</nowiki> is a hyphen-minus  
+:<nowiki>/</nowiki> is a slash
+:<nowiki><</nowiki> is a less-than sign  
+:<nowiki>></nowiki> is a greater-than sign
+:<nowiki>=</nowiki> is an equal sign
+:<nowiki>\</nowiki> is a backslash 
+:<nowiki>{</nowiki> is a left curly bracket
+:<nowiki>|</nowiki> is a vertical bar 
+:<nowiki>}</nowiki> is a right curly bracket 
+:<nowiki>~</nowiki> is a tilde
+
+'<nowiki></nowiki>'this text is in italics'<nowiki></nowiki>'
+
+'<nowiki> </nowiki>'this text is not in italics'<nowiki> </nowiki>'
+
+<nowiki>----</nowiki> this is not a line
+
+<nowiki>one & two</nowiki> is the same as <nowiki>one &amp; two</nowiki>
+
+this <nowiki><br /></nowiki> does not break the line
+
+== <nowiki> this is not a title
+
+</nowiki> ==
+
+== <nowiki> this is a title </nowiki> ==
+
+<nowiki>this is
+'''not''' in bold
+</nowiki>
+
+
+- - -this text is between two horizontal lines
+- - -
+
+== Tables ==
+
+Last but not least ...
+
+
+{| border="1"
+| first
+| line
+|-
+| second
+| line
+|}
+
+
+{|
+| 
+{| border="1"
+| 4 || 9 || 2
+|-
+| 3 || 5 || 7
+|-
+| 8 || 1 || 6
+|}
+|
+{||; border="1"
+4;9;2
+3;5;7
+8;1;6
+||}
+|-
+|
+{||, border="1"
+4,9,2
+3,5,7
+8,1,6
+||}
+|
+{|| border="1"
+4	9	2
+3	5	7
+8	1	6
+||}
+|}
+
+
+{||, border="1"
+{1<nowiki>,</nowiki>2<nowiki>,</nowiki>3},{4<nowiki>,</nowiki>5<nowiki>,</nowiki>6}
+{7<nowiki>,</nowiki>8<nowiki>,</nowiki>9},{10<nowiki>,</nowiki>11<nowiki>,</nowiki>12}
+||}
+
+
+- - -
+
+
