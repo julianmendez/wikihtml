@@ -51,35 +51,38 @@
 	For more information about this file, see http://ant.apache.org 
 	-->
 
-	<!-- Imports project.groupId, project.artifactId, and project.version properties. -->
+	<!-- Imports 'project.groupId', 'project.artifactId', and 'project.version' properties. -->
 	<xmlproperty file="pom.xml" />
 
-	<!-- Imports dependencies. -->
-	<property file="version.properties" />
-
-	<!-- 
-
-	The following version properties should be defined at this point : 
-	  * dependencies : has a space-separated list of the jars required to compile the project and run the test cases
-	  * javadocsrc : has a colon-separated list of source directories for the javadoc
-
-	-->
-
 	<property name="project.build.directory" value="${basedir}/target" />
+	<property name="project.build.outputDirectory" value="${project.build.directory}/classes" />
+	<property name="javadocsrc" value="../wikihtml/src/main/javadoc:../wikihtml/src/main/java" />
+	<property name="_mainclass" value="de.tudresden.inf.lat.wikihtml.main.Main" />
 
 	<!-- Cleans compiled files. -->
 	<target name="clean">
 		<delete dir="${project.build.directory}" />
 	</target>
 
+	<!-- Creates the jar with main class. -->
+	<target name="bundle">
+		<jar destfile="${project.build.directory}/${project.artifactId}.jar">
+			<fileset dir="${project.build.outputDirectory}" />
+			<manifest>
+				<attribute name="Implementation-Title" value="${project.groupId}" />
+				<attribute name="Implementation-Version" value="${project.version}" />
+				<attribute name="Main-Class" value="${_mainclass}" />
+			</manifest>
+		</jar>
+	</target>
+
 	<!-- Compiles this module. -->
 	<target name="dist">
 		<subant genericantfile="genericantfile.xml" buildpath=".">
-			<property name="project.groupId" value="${project.groupId}" />
-			<property name="project.artifactId" value="${project.artifactId}" />
-			<property name="project.version" value="${project.version}" />
-			<property name="dependencies" value="${dependencies}" />
+			<property name="javadocsrc" value="${javadocsrc}" />
 		</subant>
+		<antcall target="bundle" />
 	</target>
 
 </project>
+
