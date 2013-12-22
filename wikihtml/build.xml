@@ -78,7 +78,7 @@
 
 	<!-- Compiles this module. -->
 	<target name="dist">
-		<subant genericantfile="genericantfile.xml" buildpath=".">
+		<subant genericantfile="common.xml" buildpath=".">
 			<property name="javadocsrc" value="${javadocsrc}" />
 		</subant>
 		<antcall target="bundle" />
