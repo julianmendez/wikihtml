@@ -53,13 +53,13 @@
 	<xmlproperty file="pom.xml" />
 
 	<!-- Project-specific properties. -->
-	<fail unless="project.groupId">Error: 'project.groupId' is undefined. This property should have the group identifier.</fail>
-	<fail unless="project.artifactId">Error: 'project.artifactId' is undefined. This property should have the artifact identifier.</fail>
-	<fail unless="project.version">Error: 'project.version' is undefined. This property should have the version number in the form major.minor.patch.</fail>
+	<fail unless="project.groupId">Error: 'project.groupId' is undefined. This property is the group identifier.</fail>
+	<fail unless="project.artifactId">Error: 'project.artifactId' is undefined. This property is the artifact identifier.</fail>
+	<fail unless="project.version">Error: 'project.version' is undefined. This property is the version number in the form major.minor.patch.</fail>
 
 	<property name="project.build.directory" value="${basedir}/target" />
 	<property name="project.build.outputDirectory" value="${project.build.directory}/classes" />
-	<property name="javadocsrc" value="../wikihtml/src/main/javadoc:../wikihtml/src/main/java" />
+	<property name="javadocsrc" value="../wikihtml/src/main/java" />
 	<property name="_mainclass" value="de.tudresden.inf.lat.wikihtml.main.Main" />
 
 	<!-- Cleans compiled files. -->
