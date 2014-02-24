@@ -56,13 +56,22 @@
 	<version>0.1.0</version>
 	<packaging>jar</packaging>
 
-	<name>wikihtml</name>
+	<dependencies>
 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<name>wikihtml</name>
 
 	<licenses>
 
@@ -77,17 +86,6 @@
 		</license>
 
 	</licenses>
-
-	<dependencies>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
 
 	<repositories>
 
