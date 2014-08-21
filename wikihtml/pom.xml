@@ -74,27 +74,38 @@
 	<name>wikihtml</name>
 
 	<licenses>
-
 		<license>
 			<name>GNU Lesser General Public License version 3</name>
 			<url>http://www.gnu.org/licenses/lgpl.txt</url>
 		</license>
-
 		<license>
 			<name>Apache License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
-
 	</licenses>
 
-	<repositories>
+	<developers>
+		<developer>
+			<name>Julian Mendez</name>
+			<email>mendez@tcs.inf.tu-dresden.de</email>
+		</developer>
+	</developers>
 
-		<repository>
-			<id>localrepo</id>
-			<name>local maven repository</name>
-			<url>file:jars/lib</url>
-		</repository>
-
-	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>de.tudresden.inf.lat.wikihtml.main.Main</mainClass>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

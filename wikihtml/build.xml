@@ -69,7 +69,7 @@
 
 	<!-- Creates the jar with main class. -->
 	<target name="bundle">
-		<jar destfile="${project.build.directory}/${project.artifactId}.jar">
+		<jar destfile="${project.build.directory}/${project.artifactId}-${project.version}.jar">
 			<fileset dir="${project.build.outputDirectory}" />
 			<manifest>
 				<attribute name="Implementation-Title" value="${project.groupId}" />
