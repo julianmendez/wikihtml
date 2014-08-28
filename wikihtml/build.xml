@@ -59,7 +59,6 @@
 
 	<property name="project.build.directory" value="${basedir}/target" />
 	<property name="project.build.outputDirectory" value="${project.build.directory}/classes" />
-	<property name="javadocsrc" value="src/main/java" />
 	<property name="_mainclass" value="de.tudresden.inf.lat.wikihtml.main.Main" />
 
 	<!-- Cleans compiled files. -->
