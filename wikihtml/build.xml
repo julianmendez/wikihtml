@@ -85,7 +85,6 @@
 			<property name="project.groupId" value="${project.groupId}" />
 			<property name="project.artifactId" value="${project.artifactId}" />
 			<property name="project.version" value="${project.version}" />
-			<property name="javadocsrc" value="${javadocsrc}" />
 		</subant>
 		<antcall target="bundle" />
 	</target>
