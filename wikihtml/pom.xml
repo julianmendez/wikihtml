@@ -68,6 +68,13 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+
+		<mainClass>${project.groupId}.main.Main</mainClass>
+		<inputFile>src/test/resources/example.text</inputFile>
+		<outputFile>output.html</outputFile>
 	</properties>
 
 	<build>
@@ -77,10 +84,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
 			</plugin>
 
 			<plugin>
@@ -117,10 +120,26 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>de.tudresden.inf.lat.wikihtml.main.Main</mainClass>
+							<mainClass>${mainClass}</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
 					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<executable>java</executable>
+					<arguments>
+						<argument>-classpath</argument>
+						<classpath />
+						<argument>${mainClass}</argument>
+						<argument>${inputFile}</argument>
+						<argument>${outputFile}</argument>
+					</arguments>
 				</configuration>
 			</plugin>
 
@@ -148,3 +167,4 @@
 	</developers>
 
 </project>
+
