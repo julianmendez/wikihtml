@@ -1,7 +1,9 @@
 WikiHTML
 ========
 
-WikiHTML is a Java library and executable standalone application that converts a file in wiki text format to an HTML file.
+[![Build Status](https://travis-ci.org/julianmendez/wikihtml.png?branch=master)](https://travis-ci.org/julianmendez/wikihtml)
+
+**WikiHTML** is a Java library and executable standalone application that converts a file in wiki text format to an HTML file.
 
 Documentation: [WikiHTML home page](http://julianmendez.github.io/wikihtml)
 
