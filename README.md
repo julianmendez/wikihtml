@@ -10,7 +10,7 @@
 
 
 ## Licenses
-[Apache 2.0](LICENSE-2.0.txt), [LGPLv3](lgpl.txt)
+[Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](http://www.gnu.org/licenses/lgpl-3.0.txt)
 
 
 ## Source code
