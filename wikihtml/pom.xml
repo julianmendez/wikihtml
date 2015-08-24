@@ -49,7 +49,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.tudresden.inf.lat.wikihtml</groupId>
+	<groupId>de.tu-dresden.inf.lat.wikihtml</groupId>
 	<artifactId>wikihtml</artifactId>
 	<version>0.1.0</version>
 	<packaging>jar</packaging>
@@ -71,7 +71,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 
-		<mainClass>${project.groupId}.main.Main</mainClass>
+		<mainClass>de.tudresden.inf.lat.wikihtml.main.Main</mainClass>
 		<inputFile>src/test/resources/example.text</inputFile>
 		<outputFile>output.html</outputFile>
 	</properties>

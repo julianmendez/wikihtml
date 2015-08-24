@@ -50,7 +50,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.tudresden.inf.lat.wikihtml</groupId>
+	<groupId>de.tu-dresden.inf.lat.wikihtml</groupId>
 	<artifactId>wikihtml-parent</artifactId>
 	<version>0.1.0</version>
 	<packaging>pom</packaging>
