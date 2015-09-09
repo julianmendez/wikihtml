@@ -13,6 +13,6 @@ jdk:
 
 
 after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+  - cd wikihtml ; mvn clean cobertura:cobertura coveralls:report
 
 
