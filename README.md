@@ -1,7 +1,6 @@
 # [WikiHTML](http://julianmendez.github.io/wikihtml/)
 
 [![Build Status](https://travis-ci.org/julianmendez/wikihtml.png?branch=master)](https://travis-ci.org/julianmendez/wikihtml)
-[![Coverage Status](https://coveralls.io/repos/julianmendez/wikihtml/badge.svg?branch=master&service=github)](https://coveralls.io/github/julianmendez/wikihtml?branch=master)
 
 **WikiHTML** is a Java library and executable standalone application that converts a file in wiki text format to an HTML file.
 
