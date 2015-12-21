@@ -215,6 +215,10 @@
 
 	<description>Application in Java that converts wikitext documents into HTML documents.</description>
 
+	<url>https://github.com/julianmendez/wikihtml</url>
+
+	<inceptionYear>2013</inceptionYear>
+
 	<licenses>
 
 		<license>
@@ -228,6 +232,11 @@
 		</license>
 
 	</licenses>
+
+	<organization>
+		<name>Chair of Automata Theory - TU Dresden</name>
+		<url>http://lat.inf.tu-dresden.de</url>
+	</organization>
 
 	<developers>
 
