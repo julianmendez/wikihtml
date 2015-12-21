@@ -9,7 +9,7 @@
 
 ## Download
 
-* [executable JAR file](https://sourceforge.net/projects/latitude/files/tabula/0.1.0/tabula-0.1.0.jar/download)
+* [executable JAR file](https://sourceforge.net/projects/latitude/files/wikihtml/0.1.0/wikihtml-0.1.0.jar/download)
 * as dependency:
 ```xml
 <dependency>
