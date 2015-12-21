@@ -66,7 +66,7 @@ where *NEW_VERSION* is the new version.
 
 ## Release notes
 
-See [release notes](http://github.com/julianmendez/tabula/blob/master/RELEASE-NOTES.md).
+See [release notes](http://github.com/julianmendez/wikihtml/blob/master/RELEASE-NOTES.md).
 
 
 ## Contact
