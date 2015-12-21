@@ -16,12 +16,37 @@
 ## Source code
 
 To checkout and compile the project, use:
-
 ```
 $ git clone https://github.com/julianmendez/wikihtml.git
 $ cd wikihtml
 $ mvn clean install
 ```
+The created executable library, its sources, and its Javadoc will be in `wikihtml/target`.
+
+To compile the project offline, first download the dependencies:
+```
+$ mvn dependency:go-offline
+```
+and once offline, use:
+```
+$ mvn --offline clean install
+```
+
+The bundles uploaded to [Sonatype](https://oss.sonatype.org/) are created with:
+```
+$ mvn clean install -DperformRelease=true
+```
+and then:
+```
+$ cd wikihtml/target
+$ jar -cf bundle.jar wikihtml-*
+```
+
+The version number is updated with:
+```
+$ mvn versions:set -DnewVersion=NEW_VERSION
+```
+where *NEW_VERSION* is the new version.
 
 
 ## Contact
