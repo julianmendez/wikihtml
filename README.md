@@ -64,6 +64,11 @@ where *NEW_VERSION* is the new version.
 [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](http://www.gnu.org/licenses/lgpl-3.0.txt)
 
 
+## Release notes
+
+See [release notes](http://github.com/julianmendez/tabula/blob/master/RELEASE-NOTES.md).
+
+
 ## Contact
 
 In case you need more information, please contact @julianmendez .
