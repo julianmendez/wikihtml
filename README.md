@@ -1,16 +1,23 @@
 # [WikiHTML](http://julianmendez.github.io/wikihtml/)
 
 [![Build Status](https://travis-ci.org/julianmendez/wikihtml.png?branch=master)](https://travis-ci.org/julianmendez/wikihtml)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.tu-dresden.inf.lat.wikihtml/wikihtml/badge.svg)](http://search.maven.org/#search|ga|1|g%3A%22de.tu-dresden.inf.lat.wikihtml%22)
+
 
 **WikiHTML** is a Java library and executable standalone application that converts a file in wiki text format to an HTML file.
 
 
-## Author
-[Julian Mendez](http://lat.inf.tu-dresden.de/~mendez/)
+## Download
 
-
-## Licenses
-[Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](http://www.gnu.org/licenses/lgpl-3.0.txt)
+* [executable JAR file](https://sourceforge.net/projects/latitude/files/tabula/0.1.0/tabula-0.1.0.jar/download)
+* as dependency:
+```xml
+<dependency>
+  <groupId>de.tu-dresden.inf.lat.wikihtml</groupId>
+  <artifactId>wikihtml</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
 
 
 ## Source code
@@ -47,6 +54,14 @@ The version number is updated with:
 $ mvn versions:set -DnewVersion=NEW_VERSION
 ```
 where *NEW_VERSION* is the new version.
+
+
+## Author
+[Julian Mendez](http://lat.inf.tu-dresden.de/~mendez/)
+
+
+## Licenses
+[Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](http://www.gnu.org/licenses/lgpl-3.0.txt)
 
 
 ## Contact
