@@ -5,7 +5,7 @@
     <title>WikiHTML by julianmendez</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
@@ -35,7 +35,7 @@
 <h2>
 <a id="licenses" class="anchor" href="#licenses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licenses</h2>
 
-<p><a href="LICENSE-2.0.txt">Apache 2.0</a>, <a href="lgpl.txt">LGPLv3</a></p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache License Version 2.0</a>, <a href="http://www.gnu.org/licenses/lgpl-3.0.txt">GNU Lesser General Public License version 3</a></p>
 
 <h2>
 <a id="source-code" class="anchor" href="#source-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source code</h2>
@@ -46,6 +46,36 @@
 $ cd wikihtml
 $ mvn clean install
 </code></pre>
+
+<p>The created executable library, its sources, and its Javadoc will be in <code>wikihtml/target</code>.</p>
+
+<p>To compile the project offline, first download the dependencies:</p>
+
+<pre><code>$ mvn dependency:go-offline
+</code></pre>
+
+<p>and once offline, use:</p>
+
+<pre><code>$ mvn --offline clean install
+</code></pre>
+
+<p>The bundles uploaded to <a href="https://oss.sonatype.org/">Sonatype</a> are created with:</p>
+
+<pre><code>$ mvn clean install -DperformRelease=true
+</code></pre>
+
+<p>and then:</p>
+
+<pre><code>$ cd wikihtml/target
+$ jar -cf bundle.jar wikihtml-*
+</code></pre>
+
+<p>The version number is updated with:</p>
+
+<pre><code>$ mvn versions:set -DnewVersion=NEW_VERSION
+</code></pre>
+
+<p>where <em>NEW_VERSION</em> is the new version.</p>
 
 <h2>
 <a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
@@ -63,4 +93,3 @@ $ mvn clean install
   
   </body>
 </html>
-
