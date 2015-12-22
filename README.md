@@ -10,6 +10,7 @@
 ## Download
 
 * [executable JAR file](https://sourceforge.net/projects/latitude/files/wikihtml/0.1.0/wikihtml-0.1.0.jar/download)
+* [The Central Repository](https://repo1.maven.org/maven2/de/tu-dresden/inf/lat/wikihtml/)
 * as dependency:
 ```xml
 <dependency>
