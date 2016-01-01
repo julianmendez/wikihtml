@@ -20,6 +20,19 @@
 </dependency>
 ```
 
+## Use
+
+It can be used as a Java library or from the command line. For example, use:
+```
+java -jar wikihtml-0.1.0.jar inputfile.text outputfile.html
+```
+to create a new HTML file from the command line, and use
+```
+java -jar wikihtml-0.1.0.jar inputoutputfile.html
+```
+to just update an HTML file with embedded wiki text.
+
+
 ## Description
 
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
