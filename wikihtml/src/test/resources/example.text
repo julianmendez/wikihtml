@@ -99,7 +99,7 @@ A list of ordered items
 
 This is an example of nowiki.
 
-* <nowiki>'''</nowiki>bold<nowiki>'''</nowiki> = '''bold'''
+* <nowiki>'''</nowiki>bold<nowiki>'''</nowiki> makes text '''bold'''
 
 
 <nowiki>*</nowiki> this is not an item list
