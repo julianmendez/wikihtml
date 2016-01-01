@@ -246,7 +246,7 @@ HTML code can also be inserted directly. For example:
 
 ## Example
 
-The following wiki text:
+The file [mupuzzle.text](https://github.com/julianmendez/wikihtml/blob/master/wikihtml/src/test/resources/mupuzzle.text) has the following wiki text:
 ```
 == MIU system  ==
 (see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
@@ -256,7 +256,7 @@ The following wiki text:
 # ''x''III''y'' &rarr; ''x''U''y'' 
 # ''x''UU''y'' &rarr; ''xy''
 ```
-produces the following HTML document:
+and is translated to the following HTML document:
 ```HTML
 <?xml version="1.0" encoding="utf-8"?>
 <!--begin_wiki_text
@@ -299,10 +299,7 @@ end_wiki_text-->
 </html>
 ```
 
-
-
-
-
+The file [example.text](https://github.com/julianmendez/wikihtml/blob/master/wikihtml/src/test/resources/example.text) has more examples.
 
 
 ## Source code
