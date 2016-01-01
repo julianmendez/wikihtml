@@ -24,8 +24,33 @@
 
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
 
+#### Line breaks
+A new line is marked with two new lines. For exqmple,
+```
+Two lines
+together
+are not considered different lines.
+```
+is rendered
+```
+Two lines together are not considered different lines.
+```
+but:
+```
+One line.
+
+Another line.
+```
+is rendeered
+```
+One line.
+Another line.
+```
 
 #### Sections
+
+Sections are marked at the beginning of a line. The heading should be between a sequence of equals signs (=). More equals signs makes the heading smaller. For example:
+
 | wiki markup                   | HTML                    |
 |:------------------------------|:------------------------|
 | `= heading 1 =`               | <h1>heading 1</h1>      |
@@ -37,6 +62,8 @@ Wiki markup, also wikitext or wikicode, is a markup language for wiki-based page
 
 
 #### Unordered lists
+
+Items in a list are marked with asterisks (*) at the beginning of the line. A subitem is marked with more asterisks. For example:
 ```
 * item 1
 * item 2
@@ -45,6 +72,7 @@ Wiki markup, also wikitext or wikicode, is a markup language for wiki-based page
 *** item 2.2.1
 * item 3
 ```
+
 is rendered as
 
 * item 1
@@ -54,7 +82,10 @@ is rendered as
    * item 2.2.1
 * item 3
 
+
 #### Ordered lists
+
+Numbered items are marked with hash sign (#) at the beginning of the line. A subitem is marked with more hash signs. For example:
 ```
 # item 1
 # item 2
@@ -63,6 +94,7 @@ is rendered as
 ### item 2.2.1
 # item 3
 ```
+
 is rendered as
 
 1. item 1
@@ -74,6 +106,8 @@ is rendered as
 
 
 #### Text formatting
+
+The text can be formatted using apostrophes (') according to the following table:
 
 | wiki markup                   | HTML                    |
 |:------------------------------|:------------------------|
@@ -95,6 +129,7 @@ This wiki text:
 | 8 || 1 || 6
 |}
 ```
+
 produces:
 
 <table boder="1">
@@ -133,6 +168,17 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 8  1  6
 ||}
 ```
+
+
+#### nowiki
+
+Some text can be excluded from the wiki formatting by using `<nowiki>`...`</nowiki>`.
+
+
+#### HTML
+
+HTML code can also be inserted directly. For example:
+`<b>bold</b>` is the same as `'''bold'''`, and `&lambda;` is rendered &lambda;.
 
 
 ## Source code
