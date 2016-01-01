@@ -25,14 +25,61 @@
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
 
 
-| wiki markup                   | HTML                 |
-|:------------------------------|:---------------------|
-| ```= heading 1 =```           | <h1>heading 1</h1>   |
-| ```== heading 2 ==```         | <h2>heading 2</h2>   |
-| ```=== heading 3 ===```       | <h3>heading 3</h3>   |
-| ```==== heading 4 ====```     | <h4>heading 4</h4>   |
-| ```===== heading 5 =====```   | <h5>heading 5</h5>   |
-| ```====== heading 6 ======``` | <h6>heading 6</h6>   |
+#### Sections
+| wiki markup                   | HTML                    |
+|:------------------------------|:------------------------|
+| `= heading 1 =`               | <h1>heading 1</h1>      |
+| `== heading 2 ==`             | <h2>heading 2</h2>      |
+| `=== heading 3 ===`           | <h3>heading 3</h3>      |
+| `==== heading 4 ====`         | <h4>heading 4</h4>      |
+| `===== heading 5 =====`       | <h5>heading 5</h5>      |
+| `====== heading 6 ======`     | <h6>heading 6</h6>      |
+
+
+#### Unordered lists
+```
+* item 1
+* item 2
+** item 2.1
+** item 2.2
+*** item 2.2.1
+* item 3
+```
+is rendered as
+
+* item 1
+* item 2
+ * item 2.1
+ * item 2.2
+   * item 2.2.1
+* item 3
+
+#### Ordered lists
+```
+# item 1
+# item 2
+## item 2.1
+## item 2.2
+### item 2.2.1
+# item 3
+```
+is rendered as
+
+1. item 1
+2. item 2
+  1. item 2.1
+  2. item 2.2
+    1. item 2.2.1
+3. item 3
+
+
+#### Text formatting
+
+| wiki markup                   | HTML                    |
+|:------------------------------|:------------------------|
+| `''italics''`                 | *italics*               | 
+| `'''bold'''`                  | **bold**                | 
+| `'''''bold italics'''''`      | ***bold italics***      | 
 
 
 
