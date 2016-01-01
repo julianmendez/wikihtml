@@ -83,6 +83,58 @@ is rendered as
 
 
 
+#### Tables
+
+This wiki text:
+```
+{| border="1"
+| 4 || 9 || 2
+|-
+| 3 || 5 || 7
+|-
+| 8 || 1 || 6
+|}
+```
+produces:
+
+<table boder="1">
+<tr><td>4</td><td>9</td><td>2</td></tr>
+<tr><td>3</td><td>5</td><td>7</td></tr>
+<tr><td>8</td><td>1</td><td>6</td></tr>
+</table>
+ 
+(without the white and gray alternation of lines)
+
+The following wiki text is not implemented in MediaWiki, but it also produces the same table:
+
+* using semicolon:
+```
+{||; border="1"
+4;9;2
+3;5;7
+8;1;6
+||}
+```
+
+* using comma:
+```
+{||, border="1"
+4,9,2
+3,5,7
+8,1,6
+||}
+```
+
+* using tabs:
+```
+{|| border="1"
+4  9  2
+3  5  7
+8  1  6
+||}
+```
+
+
 ## Source code
 
 To checkout and compile the project, use:
