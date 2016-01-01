@@ -26,7 +26,7 @@
 <p><a href="https://travis-ci.org/julianmendez/wikihtml"><img src="https://travis-ci.org/julianmendez/wikihtml.png?branch=master" alt="Build Status"></a>
 <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22de.tu-dresden.inf.lat.wikihtml%22"><img src="https://maven-badges.herokuapp.com/maven-central/de.tu-dresden.inf.lat.wikihtml/wikihtml/badge.svg" alt="Maven Central"></a></p>
 
-<p><strong>WikiHTML</strong> is a Java library and executable standalone application that converts a file in wiki text format to an HTML file.</p>
+<p><strong>WikiHTML</strong> is a Java library and executable standalone application that converts a document in wiki text format to an HTML document.</p>
 
 <h2>
 <a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h2>
@@ -42,6 +42,451 @@
   &lt;<span class="pl-ent">artifactId</span>&gt;wikihtml&lt;/<span class="pl-ent">artifactId</span>&gt;
   &lt;<span class="pl-ent">version</span>&gt;0.1.0&lt;/<span class="pl-ent">version</span>&gt;
 &lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<h2>
+<a id="use" class="anchor" href="#use" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use</h2>
+
+<p>It can be used as a Java library or from the command line. For example, use:</p>
+
+<pre><code>java -jar wikihtml-0.1.0.jar inputfile.text outputfile.html
+</code></pre>
+
+<p>to create a new HTML file from the command line, and use</p>
+
+<pre><code>java -jar wikihtml-0.1.0.jar inputoutputfile.html
+</code></pre>
+
+<p>to just update an HTML file with embedded wiki text.</p>
+
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h2>
+
+<p>Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the <a href="https://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> software.</p>
+
+<p>The application generates the HTML document with the original wiki markup source code inside. Technically, the source code will be between: <code>&lt;!--begin_wiki_text</code> and <code>end_wiki_text--&gt;</code>. This allows to update an HTML file using the source in the same file. </p>
+
+<p>This could be useful, for example, when maintaining documentation of a project. The files can be easily edited using a text editor, but after processing them with this library, they can be viewed with a browser.</p>
+
+<p>When using only the wiki formatting, the produced document is an <a href="http://www.w3.org/TR/xhtml11/">XHTML 1.1</a> document.</p>
+
+<h4>
+<a id="sections" class="anchor" href="#sections" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sections</h4>
+
+<p>Sections are marked at the beginning of a line. The heading should be between a sequence of equals signs (=). Using more equals signs makes the heading smaller. For example:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">wiki markup</th>
+<th align="left">HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>= heading 1 =</code></td>
+<td align="left"><h1>
+<a id="heading-1" class="anchor" href="#heading-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>heading 1</h1></td>
+</tr>
+<tr>
+<td align="left"><code>== heading 2 ==</code></td>
+<td align="left"><h2>
+<a id="heading-2" class="anchor" href="#heading-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>heading 2</h2></td>
+</tr>
+<tr>
+<td align="left"><code>=== heading 3 ===</code></td>
+<td align="left"><h3>
+<a id="heading-3" class="anchor" href="#heading-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>heading 3</h3></td>
+</tr>
+<tr>
+<td align="left"><code>==== heading 4 ====</code></td>
+<td align="left"><h4>
+<a id="heading-4" class="anchor" href="#heading-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>heading 4</h4></td>
+</tr>
+<tr>
+<td align="left"><code>===== heading 5 =====</code></td>
+<td align="left"><h5>
+<a id="heading-5" class="anchor" href="#heading-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>heading 5</h5></td>
+</tr>
+<tr>
+<td align="left"><code>====== heading 6 ======</code></td>
+<td align="left"><h6>
+<a id="heading-6" class="anchor" href="#heading-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>heading 6</h6></td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="line-breaks" class="anchor" href="#line-breaks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Line breaks</h4>
+
+<p>A new line is marked with two new lines. For example,</p>
+
+<pre><code>Two lines
+together
+are not considered different lines.
+</code></pre>
+
+<p>is rendered</p>
+
+<pre><code>Two lines together are not considered different lines.
+</code></pre>
+
+<p>but:</p>
+
+<pre><code>One line.
+
+Another line.
+</code></pre>
+
+<p>is rendered</p>
+
+<pre><code>One line.
+Another line.
+</code></pre>
+
+<h4>
+<a id="indented-text" class="anchor" href="#indented-text" aria-hidden="true"><span class="octicon octicon-link"></span></a>Indented text</h4>
+
+<p>Text can be indented using colons (:) at the beginning of the line. For example:</p>
+
+<pre><code>: item 1
+: item 2
+:: item 2.1
+:: item 2.2
+::: item 2.2.1
+: item 3
+</code></pre>
+
+<p>produces:</p>
+
+<pre><code>   item 1
+   item 2
+     item 2.1
+     item 2.2
+       item 2.2.1
+   item3
+</code></pre>
+
+<h4>
+<a id="unordered-lists" class="anchor" href="#unordered-lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unordered lists</h4>
+
+<p>Items in a list are marked with asterisks (*) at the beginning of the line. A subitem is marked with more asterisks. For example:</p>
+
+<pre><code>* item 1
+* item 2
+** item 2.1
+** item 2.2
+*** item 2.2.1
+* item 3
+</code></pre>
+
+<p>is rendered as</p>
+
+<ul>
+<li>item 1</li>
+<li>item 2
+
+<ul>
+<li>item 2.1</li>
+<li>item 2.2
+
+<ul>
+<li>item 2.2.1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>item 3</li>
+</ul>
+
+<h4>
+<a id="ordered-lists" class="anchor" href="#ordered-lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ordered lists</h4>
+
+<p>Numbered items are marked with hash signs (#) at the beginning of the line. A subitem is marked with more hash signs. For example:</p>
+
+<pre><code># item 1
+# item 2
+## item 2.1
+## item 2.2
+### item 2.2.1
+# item 3
+</code></pre>
+
+<p>is rendered as</p>
+
+<ol>
+<li>item 1</li>
+<li>item 2
+
+<ol>
+<li>item 2.1</li>
+<li>item 2.2
+
+<ol>
+<li>item 2.2.1</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>item 3</li>
+</ol>
+
+<h4>
+<a id="text-formatting" class="anchor" href="#text-formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text formatting</h4>
+
+<p>The text can be formatted using apostrophes (') according to the following table:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">wiki markup</th>
+<th align="left">HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>''italics''</code></td>
+<td align="left"><em>italics</em></td>
+</tr>
+<tr>
+<td align="left"><code>'''bold'''</code></td>
+<td align="left"><strong>bold</strong></td>
+</tr>
+<tr>
+<td align="left"><code>'''''bold italics'''''</code></td>
+<td align="left"><strong><em>bold italics</em></strong></td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h4>
+
+<p>Links can be marked with square backets ([ ]). For example:
+<code>[http://www.wikipedia.org Wikipedia]</code> renders <a href="http://www.wikipedia.org">Wikipedia</a>.
+If the brackets are omitted, the URI is shown directly. For example: <code>http://www.wikipedia.org</code> renders <a href="http://www.wikipedia.org">http://www.wikipedia.org</a> .</p>
+
+<p>The double square brackets ([[ ]]) are rendered as local links.</p>
+
+<h4>
+<a id="tables" class="anchor" href="#tables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tables</h4>
+
+<p>This wiki text:</p>
+
+<pre><code>{| border="1"
+| 4 || 9 || 2
+|-
+| 3 || 5 || 7
+|-
+| 8 || 1 || 6
+|}
+</code></pre>
+
+<p>produces the following table:</p>
+
+<table>
+<tr>
+<td>4</td>
+<td>9</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>6</td>
+</tr>
+</table>
+ 
+
+<p>(without the white and gray alternation of lines)</p>
+
+<p>The following wiki text is not implemented in MediaWiki, but it also produces the same table:</p>
+
+<ul>
+<li>using semicolon:</li>
+</ul>
+
+<pre><code>{||; border="1"
+4;9;2
+3;5;7
+8;1;6
+||}
+</code></pre>
+
+<ul>
+<li>using comma:</li>
+</ul>
+
+<pre><code>{||, border="1"
+4,9,2
+3,5,7
+8,1,6
+||}
+</code></pre>
+
+<ul>
+<li>using tabs:</li>
+</ul>
+
+<pre><code>{|| border="1"
+4  9  2
+3  5  7
+8  1  6
+||}
+</code></pre>
+
+<h4>
+<a id="nowiki" class="anchor" href="#nowiki" aria-hidden="true"><span class="octicon octicon-link"></span></a>nowiki</h4>
+
+<p>The pair of tags <code>&lt;nowiki&gt;</code>...<code>&lt;/nowiki&gt;</code> is used to mark text without using the wiki formatting. For example:
+<code>&lt;nowiki&gt;'''&lt;/nowiki&gt;non-bold&lt;nowiki&gt;'''&lt;/nowiki&gt;</code> is not in bold.</p>
+
+<h4>
+<a id="variables" class="anchor" href="#variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Variables</h4>
+
+<p>The following MediaWiki variables are implemented:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="left">example</th>
+<th align="left">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>{{CURRENTDAY}}</code></td>
+<td align="left"><code>1</code></td>
+<td align="left">Displays the current day in numeric form.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTDAY2}}</code></td>
+<td align="left"><code>01</code></td>
+<td align="left">Same as <code>{{CURRENTDAY}}</code>, but with leading zero (01 .. 31).</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTDAYNAME}}</code></td>
+<td align="left"><code>Friday</code></td>
+<td align="left">Name of the day in the language of the project or English.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTDOW}}</code></td>
+<td align="left"><code>5</code></td>
+<td align="left">Same as <code>{{CURRENTDAYNAME}}</code>, but as a number (0=Sunday, 1=Monday...).</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTMONTH}}</code></td>
+<td align="left"><code>01</code></td>
+<td align="left">The number 01 .. 12 of the month.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTMONTHABBREV}}</code></td>
+<td align="left"><code>Jan</code></td>
+<td align="left">Same as <code>{{CURRENTMONTH}}</code>, but in abbreviated form as Jan .. Dec.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTMONTHNAME}}</code></td>
+<td align="left"><code>January</code></td>
+<td align="left">Same as <code>{{CURRENTMONTH}}</code>, but in named form January .. December.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTTIME}}</code></td>
+<td align="left"><code>16:03</code></td>
+<td align="left">The current time (00:00 .. 23:59).</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTHOUR}}</code></td>
+<td align="left"><code>16</code></td>
+<td align="left">The current hour (00 .. 23).</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTWEEK}}</code></td>
+<td align="left"><code>1</code></td>
+<td align="left">Number of the current week (1-53) according to ISO 8601 with no leading zero.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTYEAR}}</code></td>
+<td align="left"><code>2016</code></td>
+<td align="left">Returns the current year.</td>
+</tr>
+<tr>
+<td align="left"><code>{{CURRENTTIMESTAMP}}</code></td>
+<td align="left"><code>20160101160345</code></td>
+<td align="left">ISO 8601 time stamp</td>
+</tr>
+</tbody>
+</table>
+
+<p>In addition, the <code>{{LOCAL...}}</code> variables are also implemented:<code>{{LOCALDAY}}</code>, <code>{{LOCALDAY2}}</code>, ... , <code>{{LOCALTIMESTAMP}}</code>. For example, in UTC+1 <code>{{CURRENTTIMESTAMP}}</code> returns <code>20160101160345</code>, while <code>{{LOCALTIMESTAMP}}</code> returns <code>20160101170345</code>.   </p>
+
+<h4>
+<a id="html" class="anchor" href="#html" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h4>
+
+<p>HTML code can also be inserted directly. For example:
+<code>&lt;b&gt;bold&lt;/b&gt;</code> is the same as <code>'''bold'''</code>, and <code>&amp;lambda;</code> is rendered λ.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>The file <a href="https://github.com/julianmendez/wikihtml/blob/master/wikihtml/src/test/resources/mupuzzle.text">mupuzzle.text</a> has the following wiki text:</p>
+
+<pre><code>== MIU system  ==
+(see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
+
+# ''x''I &amp;rarr; ''x''IU
+# M''x'' &amp;rarr; M''xx''
+# ''x''III''y'' &amp;rarr; ''x''U''y'' 
+# ''x''UU''y'' &amp;rarr; ''xy''
+</code></pre>
+
+<p>and is translated to the following HTML document:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;?<span class="pl-ent">xml</span> <span class="pl-e">version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span> <span class="pl-e">encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>?&gt;
+<span class="pl-c">&lt;!--begin_wiki_text</span>
+<span class="pl-c">== MIU system  ==</span>
+<span class="pl-c">(see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])</span>
+<span class="pl-c"></span>
+<span class="pl-c"># ''x''I &amp;rarr; ''x''IU</span>
+<span class="pl-c"># M''x'' &amp;rarr; M''xx''</span>
+<span class="pl-c"># ''x''III''y'' &amp;rarr; ''x''U''y'' </span>
+<span class="pl-c"># ''x''UU''y'' &amp;rarr; ''xy''</span>
+<span class="pl-c"></span>
+<span class="pl-c">end_wiki_text--&gt;</span>
+
+&lt;!DOCTYPE html PUBLIC <span class="pl-s">"-//W3C//DTD XHTML 1.1//EN"</span> <span class="pl-s">"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"</span>&gt;
+
+&lt;<span class="pl-ent">html</span> <span class="pl-e">xmlns</span>=<span class="pl-s"><span class="pl-pds">"</span>http://www.w3.org/1999/xhtml<span class="pl-pds">"</span></span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+  &lt;<span class="pl-ent">meta</span> <span class="pl-e">http-equiv</span>=<span class="pl-s"><span class="pl-pds">"</span>Content-Type<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>text/html; charset=utf-8<span class="pl-pds">"</span></span> /&gt;
+  &lt;<span class="pl-ent">title</span>&gt;&lt;/<span class="pl-ent">title</span>&gt;
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+  &lt;<span class="pl-ent">div</span>&gt;
+
+
+&lt;<span class="pl-ent">h2</span>&gt; MIU system  &lt;/<span class="pl-ent">h2</span>&gt;
+ (see &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://en.wikipedia.org/wiki/MU_puzzle<span class="pl-pds">"</span></span>&gt;MU puzzle&lt;/<span class="pl-ent">a</span>&gt;)&lt;<span class="pl-ent">br</span> /&gt;
+
+&lt;<span class="pl-ent">ol</span>&gt;
+&lt;<span class="pl-ent">li</span>&gt; &lt;<span class="pl-ent">i</span>&gt;x&lt;/<span class="pl-ent">i</span>&gt;I <span class="pl-c1">&amp;rarr;</span> &lt;<span class="pl-ent">i</span>&gt;x&lt;/<span class="pl-ent">i</span>&gt;IU&lt;/<span class="pl-ent">li</span>&gt;
+&lt;<span class="pl-ent">li</span>&gt; M&lt;<span class="pl-ent">i</span>&gt;x&lt;/<span class="pl-ent">i</span>&gt; <span class="pl-c1">&amp;rarr;</span> M&lt;<span class="pl-ent">i</span>&gt;xx&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+&lt;<span class="pl-ent">li</span>&gt; &lt;<span class="pl-ent">i</span>&gt;x&lt;/<span class="pl-ent">i</span>&gt;III&lt;<span class="pl-ent">i</span>&gt;y&lt;/<span class="pl-ent">i</span>&gt; <span class="pl-c1">&amp;rarr;</span> &lt;<span class="pl-ent">i</span>&gt;x&lt;/<span class="pl-ent">i</span>&gt;U&lt;<span class="pl-ent">i</span>&gt;y&lt;/<span class="pl-ent">i</span>&gt; &lt;/<span class="pl-ent">li</span>&gt;
+&lt;<span class="pl-ent">li</span>&gt; &lt;<span class="pl-ent">i</span>&gt;x&lt;/<span class="pl-ent">i</span>&gt;UU&lt;<span class="pl-ent">i</span>&gt;y&lt;/<span class="pl-ent">i</span>&gt; <span class="pl-c1">&amp;rarr;</span> &lt;<span class="pl-ent">i</span>&gt;xy&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+&lt;/<span class="pl-ent">ol</span>&gt;
+&lt;<span class="pl-ent">br</span> /&gt;
+
+
+
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<p>The file <a href="https://github.com/julianmendez/wikihtml/blob/master/wikihtml/src/test/resources/example.text">example.text</a> has more examples.</p>
 
 <h2>
 <a id="source-code" class="anchor" href="#source-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source code</h2>
