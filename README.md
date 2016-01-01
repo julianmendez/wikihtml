@@ -244,6 +244,67 @@ HTML code can also be inserted directly. For example:
 `<b>bold</b>` is the same as `'''bold'''`, and `&lambda;` is rendered &lambda;.
 
 
+## Example
+
+The following wiki text:
+```
+== MIU system  ==
+(see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
+
+# ''x''I &rarr; ''x''IU
+# M''x'' &rarr; M''xx''
+# ''x''III''y'' &rarr; ''x''U''y'' 
+# ''x''UU''y'' &rarr; ''xy''
+```
+produces the following HTML document:
+```HTML
+<?xml version="1.0" encoding="utf-8"?>
+<!--begin_wiki_text
+== MIU system  ==
+(see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
+
+# ''x''I &rarr; ''x''IU
+# M''x'' &rarr; M''xx''
+# ''x''III''y'' &rarr; ''x''U''y'' 
+# ''x''UU''y'' &rarr; ''xy''
+
+end_wiki_text-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+</head>
+<body>
+  <div>
+
+
+<h2> MIU system  </h2>
+ (see <a href="https://en.wikipedia.org/wiki/MU_puzzle">MU puzzle</a>)<br />
+
+<ol>
+<li> <i>x</i>I &rarr; <i>x</i>IU</li>
+<li> M<i>x</i> &rarr; M<i>xx</i></li>
+<li> <i>x</i>III<i>y</i> &rarr; <i>x</i>U<i>y</i> </li>
+<li> <i>x</i>UU<i>y</i> &rarr; <i>xy</i></li>
+</ol>
+<br />
+
+
+
+  </div>
+</body>
+</html>
+```
+
+
+
+
+
+
+
 ## Source code
 
 To checkout and compile the project, use:
