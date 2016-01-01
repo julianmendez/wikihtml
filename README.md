@@ -4,7 +4,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.tu-dresden.inf.lat.wikihtml/wikihtml/badge.svg)](http://search.maven.org/#search|ga|1|g%3A%22de.tu-dresden.inf.lat.wikihtml%22)
 
 
-**WikiHTML** is a Java library and executable standalone application that converts a file in wiki text format to an HTML file.
+**WikiHTML** is a Java library and executable standalone application that converts a document in wiki text format to an HTML document.
 
 
 ## Download
