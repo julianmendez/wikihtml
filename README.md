@@ -24,6 +24,12 @@
 
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
 
+The application generates the HTML document with the original wiki markup source code inside. Technically, the source code will be between: `<!--begin_wiki_text` and `end_wiki_text-->`. This allows to update an HTML file using the source in the same file. 
+
+This could be useful, for example, when maintaining documentation of a project. The files can be easily edited using a text editor, but after processing them with this library, they can be viewed with a browser.
+
+When using only the wiki formatting, the produced document is an [XHTML 1.1](http://www.w3.org/TR/xhtml11/) document.
+
 
 #### Sections
 
@@ -76,7 +82,6 @@ Text can be indented using colons (:) at the beginning of the line. For example:
 : item 3
 ```
 produces:
-
 ```
    item 1
    item 2
@@ -149,6 +154,8 @@ Links can be marked with square backets ([ ]). For example:
 `[http://www.wikipedia.org Wikipedia]` renders [Wikipedia](http://www.wikipedia.org).
 If the brackets are omitted, the URI is shown directly. For example: `http://www.wikipedia.org` renders http://www.wikipedia.org .
 
+The double square brackets ([[ ]]) are rendered as local links.
+
 
 #### Tables
 
@@ -205,7 +212,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 #### nowiki
 
-The `<nowiki>`...`</nowiki>` is used to mark text without using the wiki formatting. For example:
+The pair of tags `<nowiki>`...`</nowiki>` is used to mark text without using the wiki formatting. For example:
 `<nowiki>'''</nowiki>non-bold<nowiki>'''</nowiki>` is not in bold.
 
 
