@@ -25,7 +25,7 @@
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
 
 #### Line breaks
-A new line is marked with two new lines. For exqmple,
+A new line is marked with two new lines. For example,
 ```
 Two lines
 together
@@ -41,7 +41,7 @@ One line.
 
 Another line.
 ```
-is rendeered
+is rendered
 ```
 One line.
 Another line.
@@ -49,7 +49,7 @@ Another line.
 
 #### Sections
 
-Sections are marked at the beginning of a line. The heading should be between a sequence of equals signs (=). More equals signs makes the heading smaller. For example:
+Sections are marked at the beginning of a line. The heading should be between a sequence of equals signs (=). Using more equals signs makes the heading smaller. For example:
 
 | wiki markup                   | HTML                    |
 |:------------------------------|:------------------------|
@@ -59,6 +59,30 @@ Sections are marked at the beginning of a line. The heading should be between a 
 | `==== heading 4 ====`         | <h4>heading 4</h4>      |
 | `===== heading 5 =====`       | <h5>heading 5</h5>      |
 | `====== heading 6 ======`     | <h6>heading 6</h6>      |
+
+
+#### Indented text
+
+Text can be indented using colons (:) at the beginning of the line. For example:
+```
+: item 1
+: item 2
+:: item 2.1
+:: item 2.2
+::: item 2.2.1
+: item 3
+```
+produces:
+
+```
+   item 1
+   item 2
+     item 2.1
+     item 2.2
+       item 2.2.1
+   item3
+```
+
 
 
 #### Unordered lists
@@ -85,7 +109,7 @@ is rendered as
 
 #### Ordered lists
 
-Numbered items are marked with hash sign (#) at the beginning of the line. A subitem is marked with more hash signs. For example:
+Numbered items are marked with hash signs (#) at the beginning of the line. A subitem is marked with more hash signs. For example:
 ```
 # item 1
 # item 2
@@ -130,7 +154,7 @@ This wiki text:
 |}
 ```
 
-produces:
+produces the following table:
 
 <table boder="1">
 <tr><td>4</td><td>9</td><td>2</td></tr>
@@ -172,7 +196,8 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 #### nowiki
 
-Some text can be excluded from the wiki formatting by using `<nowiki>`...`</nowiki>`.
+The `<nowiki>`...`</nowiki>` is used to mark text without using the wiki formatting. For example:
+`<nowiki>'''</nowiki>non-bold<nowiki>'''</nowiki>` is not in bold.
 
 
 #### HTML
