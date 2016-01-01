@@ -24,7 +24,23 @@
 
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
 
+
+#### Sections
+
+Sections are marked at the beginning of a line. The heading should be between a sequence of equals signs (=). Using more equals signs makes the heading smaller. For example:
+
+| wiki markup                   | HTML                    |
+|:------------------------------|:------------------------|
+| `= heading 1 =`               | <h1>heading 1</h1>      |
+| `== heading 2 ==`             | <h2>heading 2</h2>      |
+| `=== heading 3 ===`           | <h3>heading 3</h3>      |
+| `==== heading 4 ====`         | <h4>heading 4</h4>      |
+| `===== heading 5 =====`       | <h5>heading 5</h5>      |
+| `====== heading 6 ======`     | <h6>heading 6</h6>      |
+
+
 #### Line breaks
+
 A new line is marked with two new lines. For example,
 ```
 Two lines
@@ -46,19 +62,6 @@ is rendered
 One line.
 Another line.
 ```
-
-#### Sections
-
-Sections are marked at the beginning of a line. The heading should be between a sequence of equals signs (=). Using more equals signs makes the heading smaller. For example:
-
-| wiki markup                   | HTML                    |
-|:------------------------------|:------------------------|
-| `= heading 1 =`               | <h1>heading 1</h1>      |
-| `== heading 2 ==`             | <h2>heading 2</h2>      |
-| `=== heading 3 ===`           | <h3>heading 3</h3>      |
-| `==== heading 4 ====`         | <h4>heading 4</h4>      |
-| `===== heading 5 =====`       | <h5>heading 5</h5>      |
-| `====== heading 6 ======`     | <h6>heading 6</h6>      |
 
 
 #### Indented text
@@ -140,6 +143,12 @@ The text can be formatted using apostrophes (') according to the following table
 | `'''''bold italics'''''`      | ***bold italics***      | 
 
 
+#### Links
+
+Links can be marked with square backets ([ ]). For example:
+`[http://www.wikipedia.org Wikipedia]` renders [Wikipedia](http://www.wikipedia.org).
+If the brackets are omitted, the URI is shown directly. For example: `http://www.wikipedia.org` renders http://www.wikipedia.org .
+
 
 #### Tables
 
@@ -198,6 +207,28 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 The `<nowiki>`...`</nowiki>` is used to mark text without using the wiki formatting. For example:
 `<nowiki>'''</nowiki>non-bold<nowiki>'''</nowiki>` is not in bold.
+
+
+#### Variables
+
+The following MediaWiki variables are implemented:
+
+| name                    | example          | meaning                                                                     |
+|:------------------------|:-----------------|:----------------------------------------------------------------------------|
+|`{{CURRENTDAY}}`         |	`1`              |	Displays the current day in numeric form.                                  |
+|`{{CURRENTDAY2}}`        |	`01`             |	Same as `{{CURRENTDAY}}`, but with leading zero (01 .. 31).                |
+|`{{CURRENTDAYNAME}}`     |	`Friday`         |	Name of the day in the language of the project or English.                 |
+|`{{CURRENTDOW}}`         |	`5`              |	Same as `{{CURRENTDAYNAME}}`, but as a number (0=Sunday, 1=Monday...).     |
+|`{{CURRENTMONTH}}`       |	`01`             |	The number 01 .. 12 of the month.                                          |
+|`{{CURRENTMONTHABBREV}}` |	`Jan`            |	Same as `{{CURRENTMONTH}}`, but in abbreviated form as Jan .. Dec.         |
+|`{{CURRENTMONTHNAME}}`   |	`January`        |	Same as `{{CURRENTMONTH}}`, but in named form January .. December.         |
+|`{{CURRENTTIME}}`        |	`16:03`          |	The current time (00:00 .. 23:59).                                         |
+|`{{CURRENTHOUR}}`        |	`16`             |	The current hour (00 .. 23).                                               |
+|`{{CURRENTWEEK}}`        |	`1`            |	Number of the current week (1-53) according to ISO 8601 with no leading zero.|
+|`{{CURRENTYEAR}}`        |	`2016`           |	Returns the current year.                                                  |
+|`{{CURRENTTIMESTAMP}}`   |	`20160101160345` |	ISO 8601 time stamp                                                        |
+
+In addition, the ``{{LOCAL...}}`` variables are also implemented:`{{LOCALDAY}}`, `{{LOCALDAY2}}`, ... , `{{LOCALTIMESTAMP}}`. For example, in UTC+1 `{{CURRENTTIMESTAMP}}` returns `20160101160345`, while `{{LOCALTIMESTAMP}}` returns `20160101170345`.  	
 
 
 #### HTML
