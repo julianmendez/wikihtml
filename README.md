@@ -356,7 +356,7 @@ where *NEW_VERSION* is the new version.
 The library reads a wiki text and creates a `WikiDocument`. 
 It extracts the wiki text from the given input and processes it line by line.
 
-Each line is transformed into a `ConversionToken`. Each token is processed by a pipeline of where each member is a `Renderer`. Each renderer  processes each conversion token producing a list of conversion tokens. These are the input for the next renderer, if any. Some renderers are parameterized and grouped. Some renderers process whole lines (in package `...line`) and some renderers process pieces of lines (in package `...part`).
+Each line is transformed into a `ConversionToken`. Each token is processed by a pipeline of objects where each one is a `Renderer`. Each renderer (`-Renderer`) processes each conversion token producing a list of conversion tokens. These are the input for the next renderer, if any. Some renderers are parameterized and grouped (`-GroupRenderer`). Some renderers process whole lines (in package `...line`) and some renderers process pieces of lines (in package `...part`).
 
 For example, all variables are processed by `...part.DateVariableRenderer`, but the headings are processed by a group of renderers (`...line.HeadingGroupRenderer`) composed by 6 renderers (h1, h2, ..., h6), where each one is a `...line.HeadingRenderer`. 
 
