@@ -22,6 +22,20 @@
 
 ## Description
 
+Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
+
+
+| wiki markup                   | HTML                 |
+|:------------------------------|:---------------------|
+| ```= heading 1 =```           | <h1>heading 1</h1>   |
+| ```== heading 2 ==```         | <h2>heading 2</h2>   |
+| ```=== heading 3 ===```       | <h3>heading 3</h3>   |
+| ```==== heading 4 ====```     | <h4>heading 4</h4>   |
+| ```===== heading 5 =====```   | <h5>heading 5</h5>   |
+| ```====== heading 6 ======``` | <h6>heading 6</h6>   |
+
+
+
 ## Source code
 
 To checkout and compile the project, use:
