@@ -529,6 +529,16 @@ $ jar -cf bundle.jar wikihtml-*
 <p>where <em>NEW_VERSION</em> is the new version.</p>
 
 <h2>
+<a id="architecture" class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h2>
+
+<p>The library reads a wiki text and creates a <code>WikiDocument</code>. 
+It extracts the wiki text from the given input and processes it line by line.</p>
+
+<p>Each line is transformed into a <code>ConversionToken</code>. Each token is processed by a pipeline of objects where each one is a <code>Renderer</code>. Each renderer (<code>-Renderer</code>) processes each conversion token producing a list of conversion tokens. These are the input for the next renderer, if any. Some renderers are parameterized and grouped (<code>-GroupRenderer</code>). Some renderers process whole lines (in package <code>...line</code>) and some renderers process pieces of lines (in package <code>...part</code>).</p>
+
+<p>For example, all variables are processed by <code>...part.DateVariableRenderer</code>, but the headings are processed by a group of renderers (<code>...line.HeadingGroupRenderer</code>) composed by 6 renderers (h1, h2, ..., h6), where each one is a <code>...line.HeadingRenderer</code>. </p>
+
+<h2>
 <a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
 
 <p><a href="http://lat.inf.tu-dresden.de/%7Emendez/">Julian Mendez</a></p>
