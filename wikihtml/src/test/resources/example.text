@@ -12,8 +12,8 @@ are not considered different lines in the output.
 
 [[Other documents]] can be reached via hyperlinks, using a [[other document|link]].
 
-It is possible to add [http://www.google.com links], directly like this one: http://www.google.com , 
-or without description like [http://www.google.com]. The [http://en.wikipedia.org/wiki/Letter_case link] preserves the letter case. 
+It is possible to add [http://www.wikipedia.org links], directly like this one: http://www.wikipedia.org , 
+or without description like [http://www.wikipedia.org]. The [http://en.wikipedia.org/wiki/Letter_case link] preserves the letter case. 
 
 Note:
 &#x003d;= This text is not a title ==
