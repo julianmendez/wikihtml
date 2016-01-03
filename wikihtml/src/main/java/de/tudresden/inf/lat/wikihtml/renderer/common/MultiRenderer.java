@@ -47,10 +47,10 @@ public class MultiRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		ret.add(token);
 		for (Renderer converter : this.list) {
-			List<ConversionToken> current = new ArrayList<ConversionToken>();
+			List<ConversionToken> current = new ArrayList<>();
 			for (ConversionToken currentToken : ret) {
 				current.addAll(converter.render(currentToken));
 			}

@@ -48,7 +48,7 @@ public class LineBreakRenderer implements Renderer {
 			throw new IllegalArgumentException("Null argument.");
 		}
 
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {
 			ret.add(new RenderedToken(WikiCons.NEW_LINE, this.htmlLineBreak));
 		} else {

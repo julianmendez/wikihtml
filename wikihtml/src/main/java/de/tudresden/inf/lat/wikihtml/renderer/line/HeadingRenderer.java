@@ -67,7 +67,7 @@ class HeadingRenderer implements Renderer {
 			throw new IllegalArgumentException("Null argument.");
 		}
 
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {
 			String text = token.getWikiText().trim();
 			String str = text.substring(this.wikiTextBegin.length(),

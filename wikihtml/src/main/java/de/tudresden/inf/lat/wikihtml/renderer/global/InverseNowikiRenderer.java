@@ -25,7 +25,7 @@ import de.tudresden.inf.lat.wikihtml.renderer.common.TokenType;
  * 
  */
 public class InverseNowikiRenderer implements Renderer {
-	private final Map<String, String> map = new HashMap<String, String>();
+	private final Map<String, String> map = new HashMap<>();
 
 	public InverseNowikiRenderer() {
 		put(WikiCons.NUMBER_SIGN_U, WikiCons.NUMBER_SIGN);
@@ -93,7 +93,7 @@ public class InverseNowikiRenderer implements Renderer {
 			throw new IllegalArgumentException("Null argument.");
 		}
 
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {
 			String normalizedText = normalize(token.getWikiText());
 			ret.add(new RenderedToken(normalizedText, token.getHTMLText()));

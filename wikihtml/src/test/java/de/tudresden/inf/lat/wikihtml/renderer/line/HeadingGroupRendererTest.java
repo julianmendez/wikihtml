@@ -52,7 +52,7 @@ public class HeadingGroupRendererTest extends TestCase {
 		Renderer renderer = new HeadingGroupRenderer();
 		ConversionToken token = new WikiLineToken(wikiMarkup + text
 				+ wikiMarkup);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n" + wikiMarkup, "\n<h" + index + ">"));
 		expected.add(new WikiLinePartToken(text));
 		expected.add(new RenderedToken(wikiMarkup, "</h" + index + ">\n"));

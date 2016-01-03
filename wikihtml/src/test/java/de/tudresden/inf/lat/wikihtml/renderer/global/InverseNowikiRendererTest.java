@@ -25,7 +25,7 @@ public class InverseNowikiRendererTest extends TestCase {
 		Renderer renderer = new InverseNowikiRenderer();
 		String escapedText = "&#x0023;&#x0026;&#x0027;&#x002A;&#x002C;&#x002D;&#x002F;&#x003A;&#x003D;&#x005C;&#x007B;&#x007C;&#x007D;&#x007E;";
 		ConversionToken token = new RenderedToken(escapedText, escapedText);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		String renderedText = "<nowiki>#&'*,-/:=\\{|}~</nowiki>";
 		expected.add(new RenderedToken(renderedText, escapedText));
 		List<ConversionToken> output = renderer.render(token);
@@ -52,7 +52,7 @@ public class InverseNowikiRendererTest extends TestCase {
 	private void tryOneSymbol(String htmlSymbol, String nowikiSymbol) {
 		Renderer renderer = new InverseNowikiRenderer();
 		ConversionToken token = new RenderedToken(htmlSymbol, htmlSymbol);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		String renderedText = "<nowiki>" + nowikiSymbol + "</nowiki>";
 		expected.add(new RenderedToken(renderedText, htmlSymbol));
 		List<ConversionToken> output = renderer.render(token);

@@ -55,7 +55,7 @@ public class DateVariableRenderer implements Renderer {
 	private final Map<String, SimpleDateFormat> translationMap;
 
 	public DateVariableRenderer() {
-		Map<String, SimpleDateFormat> map = new TreeMap<String, SimpleDateFormat>();
+		Map<String, SimpleDateFormat> map = new TreeMap<>();
 		put(map, VarName.DAY, DF_DAY);
 		put(map, VarName.DAY2, DF_DAY2);
 		put(map, VarName.DAYNAME, DF_DAYNAME);
@@ -128,7 +128,7 @@ public class DateVariableRenderer implements Renderer {
 			throw new IllegalArgumentException("Null argument.");
 		}
 
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {
 			String currentText = token.getWikiText();
 			for (String key : this.translationMap.keySet()) {

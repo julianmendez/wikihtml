@@ -57,7 +57,7 @@ public class TemplateRenderer implements Renderer {
 			throw new IllegalArgumentException("Null argument.");
 		}
 
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {
 			boolean applied = false;
 			String currentText = token.getWikiText();

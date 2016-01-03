@@ -81,7 +81,7 @@ public class DateVariableRendererTest extends TestCase {
 		String suffix = " and some text here";
 		ConversionToken token = new WikiLinePartToken(prefix + variableName
 				+ suffix);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLinePartToken(prefix + expectedResult + suffix));
 		List<ConversionToken> output = renderer.render(token,
 				date20041103195347);

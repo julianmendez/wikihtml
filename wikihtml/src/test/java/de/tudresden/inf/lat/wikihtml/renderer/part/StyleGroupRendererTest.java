@@ -49,7 +49,7 @@ public class StyleGroupRendererTest extends TestCase {
 
 		Renderer renderer = new StyleGroupRenderer();
 		ConversionToken token = new WikiLinePartToken(wikiText);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLinePartToken("This text includes "));
 		expected.add(new RenderedToken("''", "<i>"));
 		expected.add(new WikiLinePartToken("italics"));
@@ -67,7 +67,7 @@ public class StyleGroupRendererTest extends TestCase {
 			String styleStart, String text, String styleEnd, String afterText) {
 		Renderer renderer = new StyleGroupRenderer();
 		ConversionToken token = new WikiLinePartToken(wikiText);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLinePartToken(beforeText));
 		expected.add(new RenderedToken(wikiMarkup, styleStart));
 		expected.add(new WikiLinePartToken(text));

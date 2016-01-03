@@ -30,7 +30,7 @@ public class WikiLineDividerTest extends TestCase {
 		Renderer renderer = new WikiLineDivider();
 		String text = "simple text";
 		ConversionToken token = new WikiLineToken(text);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n", " "));
 		expected.add(new WikiLinePartToken(text));
 		List<ConversionToken> output = renderer.render(token);

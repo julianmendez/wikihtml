@@ -25,7 +25,7 @@ public class NowikiRendererTest extends TestCase {
 		Renderer renderer = new NowikiRenderer();
 		ConversionToken input = new WikiLineToken(
 				"<nowiki>'''text with ignored format'''</nowiki>");
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken(
 				"&#x0027;&#x0027;&#x0027;text with ignored format&#x0027;&#x0027;&#x0027;"));
 		List<ConversionToken> output = renderer.render(input);
@@ -37,12 +37,12 @@ public class NowikiRendererTest extends TestCase {
 		ConversionToken input1 = new WikiLineToken("<nowiki>text with spaces");
 		ConversionToken input2 = new WikiLineToken("and '''new''' lines");
 		ConversionToken input3 = new WikiLineToken(" as well</nowiki>");
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken("text with spaces"));
 		expected.add(new WikiLineToken(
 				"and &#x0027;&#x0027;&#x0027;new&#x0027;&#x0027;&#x0027; lines"));
 		expected.add(new WikiLineToken(" as well"));
-		List<ConversionToken> output = new ArrayList<ConversionToken>();
+		List<ConversionToken> output = new ArrayList<>();
 		output.addAll(renderer.render(input1));
 		output.addAll(renderer.render(input2));
 		output.addAll(renderer.render(input3));
@@ -53,7 +53,7 @@ public class NowikiRendererTest extends TestCase {
 		Renderer renderer = new NowikiRenderer();
 		ConversionToken input = new WikiLineToken(
 				"<nowiki>text with spaces\nand new lines\n as well</nowiki>");
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken(
 				"text with spaces\nand new lines\n as well"));
 		List<ConversionToken> output = renderer.render(input);
@@ -64,7 +64,7 @@ public class NowikiRendererTest extends TestCase {
 		Renderer renderer = new NowikiRenderer();
 		ConversionToken input = new WikiLineToken(
 				"<nowiki>text with spaces</nowiki>");
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken("text with spaces"));
 		List<ConversionToken> output = renderer.render(input);
 		assertEquals(expected, output);

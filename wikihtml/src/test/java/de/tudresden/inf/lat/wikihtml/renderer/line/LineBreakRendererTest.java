@@ -28,7 +28,7 @@ public class LineBreakRendererTest extends TestCase {
 	public void testEmptyLine() {
 		Renderer renderer = new LineBreakRenderer();
 		ConversionToken token = new WikiLineToken("");
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		String renderedText = "<br />\n";
 		expected.add(new RenderedToken("\n", renderedText));
 		List<ConversionToken> output = renderer.render(token);
@@ -38,7 +38,7 @@ public class LineBreakRendererTest extends TestCase {
 	public void testLineWithSpacesAndTabs() {
 		Renderer renderer = new LineBreakRenderer();
 		ConversionToken token = new WikiLineToken("   \t   \t ");
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		String renderedText = "<br />\n";
 		expected.add(new RenderedToken("\n", renderedText));
 		List<ConversionToken> output = renderer.render(token);

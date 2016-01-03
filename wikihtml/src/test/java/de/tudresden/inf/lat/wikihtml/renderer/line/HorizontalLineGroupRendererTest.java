@@ -29,7 +29,7 @@ public class HorizontalLineGroupRendererTest extends TestCase {
 		Renderer renderer = new HorizontalLineGroupRenderer();
 		String text = "----";
 		ConversionToken token = new WikiLineToken(text);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n----", "\n<hr />\n"));
 		List<ConversionToken> output = renderer.render(token);
 		assertEquals(expected, output);
@@ -39,7 +39,7 @@ public class HorizontalLineGroupRendererTest extends TestCase {
 		Renderer renderer = new HorizontalLineGroupRenderer();
 		String text = "- - -";
 		ConversionToken token = new WikiLineToken(text);
-		List<ConversionToken> expected = new ArrayList<ConversionToken>();
+		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n- - -", "\n<hr />\n"));
 		List<ConversionToken> output = renderer.render(token);
 		assertEquals(expected, output);

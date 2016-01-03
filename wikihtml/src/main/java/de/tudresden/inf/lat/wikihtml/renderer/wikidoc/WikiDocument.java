@@ -162,7 +162,7 @@ public class WikiDocument {
 	}
 
 	private List<ConversionToken> prepareDocument(List<String> document) {
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		for (String line : document) {
 			ret.add(new WikiLineToken(line));
 		}
@@ -183,7 +183,7 @@ public class WikiDocument {
 	}
 
 	private List<ConversionToken> renderDocument(List<ConversionToken> document) {
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		for (ConversionToken line : document) {
 			ret.addAll(this.renderer.render(line));
 		}
@@ -249,7 +249,7 @@ public class WikiDocument {
 
 	private List<ConversionToken> renderWikiTokens(
 			List<ConversionToken> document) {
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		for (ConversionToken token : document) {
 			if (token.getType().equals(TokenType.HTML_TEXT)) {
 				ret.add(token);
@@ -262,7 +262,7 @@ public class WikiDocument {
 	}
 
 	private List<ConversionToken> revertNowikiTag(List<ConversionToken> document) {
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		InverseNowikiRenderer inverseNowikiRenderer = new InverseNowikiRenderer();
 		for (ConversionToken token : document) {
 			ret.addAll(inverseNowikiRenderer.render(token));

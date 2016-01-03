@@ -149,7 +149,7 @@ class TableRenderer implements Renderer {
 	}
 
 	private List<ConversionToken> addNewCells(String line) {
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 		if (!this.firstCell) {
 			ret.add(new RenderedToken("", this.htmlCellEnd));
 		}
@@ -208,7 +208,7 @@ class TableRenderer implements Renderer {
 			throw new IllegalArgumentException("Null argument.");
 		}
 
-		List<ConversionToken> ret = new ArrayList<ConversionToken>();
+		List<ConversionToken> ret = new ArrayList<>();
 
 		if (isApplicable(token)) {
 			String text = token.getWikiText().toLowerCase();
