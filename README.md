@@ -1,4 +1,4 @@
-# [WikiHTML](http://julianmendez.github.io/wikihtml/)
+# [WikiHTML](https://julianmendez.github.io/wikihtml/)
 
 [![Build Status](https://travis-ci.org/julianmendez/wikihtml.png?branch=master)](https://travis-ci.org/julianmendez/wikihtml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.tu-dresden.inf.lat.wikihtml/wikihtml/badge.svg)](http://search.maven.org/#search|ga|1|g%3A%22de.tu-dresden.inf.lat.wikihtml%22)
@@ -366,12 +366,12 @@ For example, all variables are processed by `...part.DateVariableRenderer`, but 
 
 
 ## Licenses
-[Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](http://www.gnu.org/licenses/lgpl-3.0.txt)
+[Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.txt)
 
 
 ## Release notes
 
-See [release notes](http://github.com/julianmendez/wikihtml/blob/master/RELEASE-NOTES.md).
+See [release notes](https://github.com/julianmendez/wikihtml/blob/master/RELEASE-NOTES.md).
 
 
 ## Contact
