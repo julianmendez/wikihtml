@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
@@ -45,36 +46,16 @@ class TableRenderer implements Renderer {
 			String htmlTableBeginTagPost, String htmlTableEnd,
 			String htmlRowBegin, String htmlRowEnd, String htmlCellBegin,
 			String htmlCellEnd) {
-		if (wikiTableBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTableEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiNewCellSameLine == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTableBeginTagPre == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTableBeginTagPost == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTableEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlRowBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlRowEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlCellBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlCellEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTableBegin);
+		Objects.requireNonNull(wikiTableEnd);
+		Objects.requireNonNull(wikiNewCellSameLine);
+		Objects.requireNonNull(htmlTableBeginTagPre);
+		Objects.requireNonNull(htmlTableBeginTagPost);
+		Objects.requireNonNull(htmlTableEnd);
+		Objects.requireNonNull(htmlRowBegin);
+		Objects.requireNonNull(htmlRowEnd);
+		Objects.requireNonNull(htmlCellBegin);
+		Objects.requireNonNull(htmlCellEnd);
 
 		this.wikiTableBegin = wikiTableBegin;
 		this.wikiTableEnd = wikiTableEnd;
@@ -96,42 +77,18 @@ class TableRenderer implements Renderer {
 			String htmlTableBeginTagPre, String htmlTableBeginTagPost,
 			String htmlTableEnd, String htmlRowBegin, String htmlRowEnd,
 			String htmlCellBegin, String htmlCellEnd) {
-		if (wikiTableBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTableEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiNewRow == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiNewCell == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiNewCellSameLine == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTableBeginTagPre == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTableBeginTagPost == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTableEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlRowBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlRowEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlCellBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlCellEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTableBegin);
+		Objects.requireNonNull(wikiTableEnd);
+		Objects.requireNonNull(wikiNewRow);
+		Objects.requireNonNull(wikiNewCell);
+		Objects.requireNonNull(wikiNewCellSameLine);
+		Objects.requireNonNull(htmlTableBeginTagPre);
+		Objects.requireNonNull(htmlTableBeginTagPost);
+		Objects.requireNonNull(htmlTableEnd);
+		Objects.requireNonNull(htmlRowBegin);
+		Objects.requireNonNull(htmlRowEnd);
+		Objects.requireNonNull(htmlCellBegin);
+		Objects.requireNonNull(htmlCellEnd);
 
 		this.wikiTableBegin = wikiTableBegin;
 		this.wikiTableEnd = wikiTableEnd;
@@ -184,9 +141,7 @@ class TableRenderer implements Renderer {
 	}
 
 	public boolean isApplicable(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		String text = token.getWikiText().toLowerCase();
 		boolean isApp1 = text.startsWith(this.wikiTableBegin);
@@ -204,9 +159,7 @@ class TableRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 

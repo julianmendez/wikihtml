@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.part;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
@@ -35,27 +36,13 @@ class InternalLinkRenderer implements Renderer {
 			String wikiTextEnd, String htmlTextBegin,
 			String htmlTextMiddleFirst, String htmlTextMiddleSecond,
 			String htmlTextEnd) {
-		if (wikiTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTextMiddle == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextMiddleFirst == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextMiddleSecond == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTextBegin);
+		Objects.requireNonNull(wikiTextMiddle);
+		Objects.requireNonNull(wikiTextEnd);
+		Objects.requireNonNull(htmlTextBegin);
+		Objects.requireNonNull(htmlTextMiddleFirst);
+		Objects.requireNonNull(htmlTextMiddleSecond);
+		Objects.requireNonNull(htmlTextEnd);
 
 		this.wikiTextBegin = wikiTextBegin;
 		this.wikiTextMiddle = wikiTextMiddle;
@@ -80,9 +67,7 @@ class InternalLinkRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

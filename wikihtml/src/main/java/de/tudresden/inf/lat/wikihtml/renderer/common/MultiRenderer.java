@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 
@@ -21,9 +22,7 @@ public class MultiRenderer implements Renderer {
 	private final List<Renderer> list;
 
 	public MultiRenderer(List<Renderer> list) {
-		if (list == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(list);
 
 		this.list = list;
 	}

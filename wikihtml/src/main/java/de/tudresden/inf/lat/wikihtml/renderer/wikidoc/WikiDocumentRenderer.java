@@ -9,6 +9,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.wikidoc;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.MultiRenderer;
@@ -61,9 +62,7 @@ public class WikiDocumentRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return this.renderer.render(token);
 	}

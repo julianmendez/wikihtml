@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.HTMLTag;
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
@@ -33,18 +34,14 @@ public class WikiLineDivider implements Renderer {
 	}
 
 	public boolean isApplicable(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE);
 	}
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

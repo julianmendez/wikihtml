@@ -6,6 +6,7 @@
 
 package de.tudresden.inf.lat.wikihtml.renderer.common;
 
+import java.util.Objects;
 
 /**
  * 
@@ -17,9 +18,7 @@ public class WikiLinePartToken implements ConversionToken {
 	private final String wikiText;
 
 	public WikiLinePartToken(String wikiText) {
-		if (wikiText == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiText);
 
 		this.wikiText = wikiText;
 	}

@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
@@ -33,21 +34,11 @@ class ListRenderer implements Renderer {
 	public ListRenderer(String wikiTextItem, String htmlTextListBegin,
 			String htmlTextListEnd, String htmlTextItemBegin,
 			String htmlTextItemEnd) {
-		if (wikiTextItem == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextListBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextListEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextItemBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextItemEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTextItem);
+		Objects.requireNonNull(htmlTextListBegin);
+		Objects.requireNonNull(htmlTextListEnd);
+		Objects.requireNonNull(htmlTextItemBegin);
+		Objects.requireNonNull(htmlTextItemEnd);
 
 		this.wikiTextItem = wikiTextItem;
 		this.htmlTextListBegin = htmlTextListBegin;
@@ -66,9 +57,7 @@ class ListRenderer implements Renderer {
 	}
 
 	public boolean isApplicable(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE)
 				&& token.getWikiText().toLowerCase()
@@ -77,9 +66,7 @@ class ListRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 

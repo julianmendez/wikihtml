@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TimeZone;
 import java.util.TreeMap;
 
@@ -90,9 +91,7 @@ public class DateVariableRenderer implements Renderer {
 	}
 
 	public boolean isApplicable(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
 				&& (token.getWikiText().toLowerCase()
@@ -113,20 +112,14 @@ public class DateVariableRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return render(token, new Date());
 	}
 
 	protected List<ConversionToken> render(ConversionToken token, Date date) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (date == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
+		Objects.requireNonNull(date);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

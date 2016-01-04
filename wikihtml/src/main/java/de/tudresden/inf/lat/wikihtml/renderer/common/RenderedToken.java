@@ -6,6 +6,7 @@
 
 package de.tudresden.inf.lat.wikihtml.renderer.common;
 
+import java.util.Objects;
 
 /**
  * 
@@ -18,12 +19,8 @@ public class RenderedToken implements ConversionToken {
 	private final String wikiText;
 
 	public RenderedToken(String wikiText, String htmlText) {
-		if (wikiText == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlText == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiText);
+		Objects.requireNonNull(htmlText);
 
 		this.wikiText = wikiText;
 		this.htmlText = htmlText;

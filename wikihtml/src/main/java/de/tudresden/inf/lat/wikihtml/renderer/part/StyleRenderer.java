@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.part;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.RenderedToken;
@@ -29,15 +30,9 @@ class StyleRenderer implements Renderer {
 
 	public StyleRenderer(String wikiTextBeginEnd, String htmlTextBegin,
 			String htmlTextEnd) {
-		if (wikiTextBeginEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTextBeginEnd);
+		Objects.requireNonNull(htmlTextBegin);
+		Objects.requireNonNull(htmlTextEnd);
 
 		this.wikiTextBegin = wikiTextBeginEnd;
 		this.wikiTextEnd = wikiTextBeginEnd;
@@ -58,9 +53,7 @@ class StyleRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

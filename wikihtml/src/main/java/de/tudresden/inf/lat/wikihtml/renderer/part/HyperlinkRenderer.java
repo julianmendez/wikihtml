@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.part;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.RenderedToken;
@@ -33,27 +34,13 @@ class HyperlinkRenderer implements Renderer {
 	public HyperlinkRenderer(String wikiTextBegin, String wikiTextMiddle,
 			String wikiTextEnd, String htmlTextBegin, String htmlTextMiddle,
 			String htmlTextEnd, String defaultDescription) {
-		if (wikiTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTextMiddle == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextMiddle == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (defaultDescription == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTextBegin);
+		Objects.requireNonNull(wikiTextMiddle);
+		Objects.requireNonNull(wikiTextEnd);
+		Objects.requireNonNull(htmlTextBegin);
+		Objects.requireNonNull(htmlTextMiddle);
+		Objects.requireNonNull(htmlTextEnd);
+		Objects.requireNonNull(defaultDescription);
 
 		this.wikiTextBegin = wikiTextBegin;
 		this.wikiTextMiddle = wikiTextMiddle;
@@ -71,9 +58,7 @@ class HyperlinkRenderer implements Renderer {
 	}
 
 	public boolean isApplicable(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
 				&& (token.getWikiText().toLowerCase()
@@ -82,9 +67,7 @@ class HyperlinkRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

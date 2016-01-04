@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.HTMLHeader;
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
@@ -44,9 +45,7 @@ public class WikiDocument {
 	}
 
 	public WikiDocument(Reader reader) throws IOException {
-		if (reader == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(reader);
 
 		List<String> listOfLines = readDocument(reader);
 		this.isWikiHTML = isWikiHTMLDocument(listOfLines);
@@ -57,9 +56,7 @@ public class WikiDocument {
 	}
 
 	public WikiDocument(String document) {
-		if (document == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(document);
 
 		StringReader reader = new StringReader(document);
 		List<String> listOfLines = null;
@@ -230,9 +227,7 @@ public class WikiDocument {
 	}
 
 	public void renderText(Writer output) throws IOException {
-		if (output == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(output);
 
 		BufferedWriter writer = new BufferedWriter(output);
 		writer.write(renderToString());

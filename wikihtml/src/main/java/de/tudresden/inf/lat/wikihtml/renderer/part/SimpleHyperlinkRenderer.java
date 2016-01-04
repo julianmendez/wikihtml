@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.part;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.RenderedToken;
@@ -30,21 +31,11 @@ class SimpleHyperlinkRenderer implements Renderer {
 
 	public SimpleHyperlinkRenderer(String wikiTextBegin, String wikiTextEnd,
 			String htmlTextBegin, String htmlTextMiddle, String htmlTextEnd) {
-		if (wikiTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (wikiTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextMiddle == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTextBegin);
+		Objects.requireNonNull(wikiTextEnd);
+		Objects.requireNonNull(htmlTextBegin);
+		Objects.requireNonNull(htmlTextMiddle);
+		Objects.requireNonNull(htmlTextEnd);
 
 		this.wikiTextBegin = wikiTextBegin;
 		this.wikiTextEnd = wikiTextEnd;
@@ -66,9 +57,7 @@ class SimpleHyperlinkRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

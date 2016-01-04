@@ -8,6 +8,7 @@ package de.tudresden.inf.lat.wikihtml.renderer.line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
@@ -30,15 +31,9 @@ class HeadingRenderer implements Renderer {
 
 	public HeadingRenderer(String wikiTextBeginEnd, String htmlTextBegin,
 			String htmlTextEnd) {
-		if (wikiTextBeginEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextBegin == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
-		if (htmlTextEnd == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(wikiTextBeginEnd);
+		Objects.requireNonNull(htmlTextBegin);
+		Objects.requireNonNull(htmlTextEnd);
 
 		this.wikiTextBegin = wikiTextBeginEnd;
 		this.wikiTextEnd = wikiTextBeginEnd;
@@ -52,9 +47,7 @@ class HeadingRenderer implements Renderer {
 	}
 
 	public boolean isApplicable(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE)
 				&& token.getWikiText().startsWith(this.wikiTextBegin)
@@ -63,9 +56,7 @@ class HeadingRenderer implements Renderer {
 
 	@Override
 	public List<ConversionToken> render(ConversionToken token) {
-		if (token == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(token);
 
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {

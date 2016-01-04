@@ -9,6 +9,7 @@ package de.tudresden.inf.lat.wikihtml.main;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 import de.tudresden.inf.lat.wikihtml.renderer.wikidoc.WikiDocument;
 
@@ -35,9 +36,7 @@ public class Main {
 	private boolean showHelp = false;
 
 	public void run(String[] args) throws IOException {
-		if (args == null) {
-			throw new IllegalArgumentException("Null argument.");
-		}
+		Objects.requireNonNull(args);
 		if ((args.length == 1) || (args.length == 2)) {
 
 			// System.out.println((new
