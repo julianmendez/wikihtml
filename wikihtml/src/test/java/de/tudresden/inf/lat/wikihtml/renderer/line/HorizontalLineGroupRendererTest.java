@@ -9,7 +9,9 @@ package de.tudresden.inf.lat.wikihtml.renderer.line;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Test;
+
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.RenderedToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.Renderer;
@@ -20,11 +22,12 @@ import de.tudresden.inf.lat.wikihtml.renderer.common.WikiLineToken;
  * @author Julian Mendez
  * 
  */
-public class HorizontalLineGroupRendererTest extends TestCase {
+public class HorizontalLineGroupRendererTest {
 
 	public HorizontalLineGroupRendererTest() {
 	}
 
+	@Test
 	public void testHorizontalLine() {
 		Renderer renderer = new HorizontalLineGroupRenderer();
 		String text = "----";
@@ -32,9 +35,10 @@ public class HorizontalLineGroupRendererTest extends TestCase {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n----", "\n<hr />\n"));
 		List<ConversionToken> output = renderer.render(token);
-		assertEquals(expected, output);
+		Assert.assertEquals(expected, output);
 	}
 
+	@Test
 	public void testHorizontalLineWithSpaces() {
 		Renderer renderer = new HorizontalLineGroupRenderer();
 		String text = "- - -";
@@ -42,7 +46,7 @@ public class HorizontalLineGroupRendererTest extends TestCase {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n- - -", "\n<hr />\n"));
 		List<ConversionToken> output = renderer.render(token);
-		assertEquals(expected, output);
+		Assert.assertEquals(expected, output);
 	}
 
 }
