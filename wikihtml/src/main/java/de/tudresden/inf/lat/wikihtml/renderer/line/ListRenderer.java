@@ -31,8 +31,7 @@ class ListRenderer implements Renderer {
 	private final String htmlTextListEnd;
 	private final String wikiTextItem;
 
-	public ListRenderer(String wikiTextItem, String htmlTextListBegin,
-			String htmlTextListEnd, String htmlTextItemBegin,
+	public ListRenderer(String wikiTextItem, String htmlTextListBegin, String htmlTextListEnd, String htmlTextItemBegin,
 			String htmlTextItemEnd) {
 		Objects.requireNonNull(wikiTextItem);
 		Objects.requireNonNull(htmlTextListBegin);
@@ -60,8 +59,7 @@ class ListRenderer implements Renderer {
 		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE)
-				&& token.getWikiText().toLowerCase()
-						.startsWith(this.wikiTextItem);
+				&& token.getWikiText().toLowerCase().startsWith(this.wikiTextItem);
 	}
 
 	@Override
@@ -73,8 +71,7 @@ class ListRenderer implements Renderer {
 		if (isApplicable(token)) {
 			String text = token.getWikiText();
 			int start = 0;
-			while ((start < text.length())
-					&& text.substring(start).startsWith(this.wikiTextItem)) {
+			while ((start < text.length()) && text.substring(start).startsWith(this.wikiTextItem)) {
 				start++;
 			}
 			if (this.depth < start) {
@@ -83,8 +80,7 @@ class ListRenderer implements Renderer {
 					ret.add(new RenderedToken("", this.htmlTextItemBegin));
 				}
 				ret.add(new RenderedToken("", this.htmlTextListBegin));
-				ret.add(new RenderedToken(WikiCons.NEW_LINE
-						+ text.substring(0, start), this.htmlTextItemBegin));
+				ret.add(new RenderedToken(WikiCons.NEW_LINE + text.substring(0, start), this.htmlTextItemBegin));
 
 			} else if (this.depth > start) {
 				for (int i = start; i < this.depth; i++) {
@@ -92,13 +88,11 @@ class ListRenderer implements Renderer {
 					ret.add(new RenderedToken("", this.htmlTextListEnd));
 				}
 				ret.add(new RenderedToken("", this.htmlTextItemEnd));
-				ret.add(new RenderedToken(WikiCons.NEW_LINE
-						+ text.substring(0, start), this.htmlTextItemBegin));
+				ret.add(new RenderedToken(WikiCons.NEW_LINE + text.substring(0, start), this.htmlTextItemBegin));
 
 			} else {
 				ret.add(new RenderedToken("", this.htmlTextItemEnd));
-				ret.add(new RenderedToken(WikiCons.NEW_LINE
-						+ text.substring(0, start), this.htmlTextItemBegin));
+				ret.add(new RenderedToken(WikiCons.NEW_LINE + text.substring(0, start), this.htmlTextItemBegin));
 
 			}
 			ret.add(new WikiLinePartToken(text.substring(start)));

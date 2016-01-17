@@ -25,26 +25,19 @@ public class LinkGroupRenderer implements Renderer {
 
 	public LinkGroupRenderer() {
 		List<Renderer> list = new ArrayList<Renderer>();
-		list.add(new InternalLinkRenderer("[[image:", "|", "]]", "<img src=\"",
-				"\" alt=\"", "\" />", ""));
+		list.add(new InternalLinkRenderer("[[image:", "|", "]]", "<img src=\"", "\" alt=\"", "\" />", ""));
 
-		list.add(new InternalLinkRenderer("[[file:", "|", "]]", "<img src=\"",
-				"\" alt=\"", "\" />", ""));
+		list.add(new InternalLinkRenderer("[[file:", "|", "]]", "<img src=\"", "\" alt=\"", "\" />", ""));
 
-		list.add(new InternalLinkRenderer("[[", "|", "]]", "<a href=\"", "\">",
-				"", "</a>"));
+		list.add(new InternalLinkRenderer("[[", "|", "]]", "<a href=\"", "\">", "", "</a>"));
 
-		list.add(new HyperlinkRenderer("[https://", " ", "]",
-				"<a href=\"https://", "\">", "</a>", "[]"));
+		list.add(new HyperlinkRenderer("[https://", " ", "]", "<a href=\"https://", "\">", "</a>", "[]"));
 
-		list.add(new HyperlinkRenderer("[http://", " ", "]",
-				"<a href=\"http://", "\">", "</a>", "[]"));
+		list.add(new HyperlinkRenderer("[http://", " ", "]", "<a href=\"http://", "\">", "</a>", "[]"));
 
-		list.add(new SimpleHyperlinkRenderer("https://", " ",
-				"<a href=\"https://", "\">https://", "</a>"));
+		list.add(new SimpleHyperlinkRenderer("https://", " ", "<a href=\"https://", "\">https://", "</a>"));
 
-		list.add(new SimpleHyperlinkRenderer("http://", " ",
-				"<a href=\"http://", "\">http://", "</a>"));
+		list.add(new SimpleHyperlinkRenderer("http://", " ", "<a href=\"http://", "\">http://", "</a>"));
 
 		this.renderer = new MultiRenderer(list);
 	}

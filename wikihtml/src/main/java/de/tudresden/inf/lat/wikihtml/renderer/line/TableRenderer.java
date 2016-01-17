@@ -41,11 +41,9 @@ class TableRenderer implements Renderer {
 	private final String wikiTableBegin;
 	private final String wikiTableEnd;
 
-	public TableRenderer(String wikiTableBegin, String wikiTableEnd,
-			String wikiNewCellSameLine, String htmlTableBeginTagPre,
-			String htmlTableBeginTagPost, String htmlTableEnd,
-			String htmlRowBegin, String htmlRowEnd, String htmlCellBegin,
-			String htmlCellEnd) {
+	public TableRenderer(String wikiTableBegin, String wikiTableEnd, String wikiNewCellSameLine,
+			String htmlTableBeginTagPre, String htmlTableBeginTagPost, String htmlTableEnd, String htmlRowBegin,
+			String htmlRowEnd, String htmlCellBegin, String htmlCellEnd) {
 		Objects.requireNonNull(wikiTableBegin);
 		Objects.requireNonNull(wikiTableEnd);
 		Objects.requireNonNull(wikiNewCellSameLine);
@@ -72,11 +70,9 @@ class TableRenderer implements Renderer {
 		this.simpleTable = true;
 	}
 
-	public TableRenderer(String wikiTableBegin, String wikiTableEnd,
-			String wikiNewRow, String wikiNewCell, String wikiNewCellSameLine,
-			String htmlTableBeginTagPre, String htmlTableBeginTagPost,
-			String htmlTableEnd, String htmlRowBegin, String htmlRowEnd,
-			String htmlCellBegin, String htmlCellEnd) {
+	public TableRenderer(String wikiTableBegin, String wikiTableEnd, String wikiNewRow, String wikiNewCell,
+			String wikiNewCellSameLine, String htmlTableBeginTagPre, String htmlTableBeginTagPost, String htmlTableEnd,
+			String htmlRowBegin, String htmlRowEnd, String htmlCellBegin, String htmlCellEnd) {
 		Objects.requireNonNull(wikiTableBegin);
 		Objects.requireNonNull(wikiTableEnd);
 		Objects.requireNonNull(wikiNewRow);
@@ -110,16 +106,14 @@ class TableRenderer implements Renderer {
 		if (!this.firstCell) {
 			ret.add(new RenderedToken("", this.htmlCellEnd));
 		}
-		ret.add(new RenderedToken((this.simpleTable ? "" : WikiCons.NEW_LINE)
-				+ this.wikiNewCell, this.htmlCellBegin));
+		ret.add(new RenderedToken((this.simpleTable ? "" : WikiCons.NEW_LINE) + this.wikiNewCell, this.htmlCellBegin));
 		String str = line;
 		while (!str.isEmpty()) {
 			int pos = str.indexOf(this.wikiNewCellSameLine);
 			if (pos != -1) {
 				ret.add(new WikiLinePartToken(str.substring(0, pos)));
 				ret.add(new RenderedToken("", this.htmlCellEnd));
-				ret.add(new RenderedToken(this.wikiNewCellSameLine,
-						this.htmlCellBegin));
+				ret.add(new RenderedToken(this.wikiNewCellSameLine, this.htmlCellBegin));
 				str = str.substring(pos + this.wikiNewCellSameLine.length());
 
 			} else {
@@ -136,8 +130,8 @@ class TableRenderer implements Renderer {
 
 	@Override
 	public String getDescription() {
-		return this.wikiTableBegin + " table " + this.wikiNewCell + " and "
-				+ this.wikiNewCellSameLine + " value " + this.wikiTableEnd;
+		return this.wikiTableBegin + " table " + this.wikiNewCell + " and " + this.wikiNewCellSameLine + " value "
+				+ this.wikiTableEnd;
 	}
 
 	public boolean isApplicable(ConversionToken token) {
@@ -145,12 +139,9 @@ class TableRenderer implements Renderer {
 
 		String text = token.getWikiText().toLowerCase();
 		boolean isApp1 = text.startsWith(this.wikiTableBegin);
-		boolean isApp2 = (this.depth > 0)
-				&& (text.startsWith(this.wikiTableEnd)
-						|| text.startsWith(this.wikiNewRow) || text
-							.startsWith(this.wikiNewCell));
-		return token.getType().equals(TokenType.WIKI_LINE)
-				&& (isApp1 || isApp2);
+		boolean isApp2 = (this.depth > 0) && (text.startsWith(this.wikiTableEnd) || text.startsWith(this.wikiNewRow)
+				|| text.startsWith(this.wikiNewCell));
+		return token.getType().equals(TokenType.WIKI_LINE) && (isApp1 || isApp2);
 	}
 
 	public boolean isSimpleTable() {
@@ -168,13 +159,10 @@ class TableRenderer implements Renderer {
 
 			if (text.startsWith(this.wikiTableBegin)) {
 				this.depth++;
-				String str = token.getWikiText().substring(
-						this.wikiTableBegin.length());
-				ret.add(new RenderedToken(WikiCons.NEW_LINE
-						+ this.wikiTableBegin, this.htmlTableBeginTagPre));
+				String str = token.getWikiText().substring(this.wikiTableBegin.length());
+				ret.add(new RenderedToken(WikiCons.NEW_LINE + this.wikiTableBegin, this.htmlTableBeginTagPre));
 				ret.add(new RenderedToken(str, str));
-				ret.add(new RenderedToken(this.simpleTable ? WikiCons.NEW_LINE
-						: "", this.htmlTableBeginTagPost));
+				ret.add(new RenderedToken(this.simpleTable ? WikiCons.NEW_LINE : "", this.htmlTableBeginTagPost));
 				ret.add(new RenderedToken("", this.htmlRowBegin));
 				this.firstRow = true;
 				this.firstCell = true;
@@ -186,8 +174,7 @@ class TableRenderer implements Renderer {
 				ret.add(new RenderedToken(WikiCons.NEW_LINE, this.htmlRowEnd));
 				ret.add(new RenderedToken(this.wikiTableEnd, this.htmlTableEnd));
 				this.depth--;
-				String str = token.getWikiText().substring(
-						this.wikiTableEnd.length());
+				String str = token.getWikiText().substring(this.wikiTableEnd.length());
 				ret.add(new WikiLinePartToken(str));
 				this.firstRow = false;
 				this.firstCell = false;
@@ -198,22 +185,19 @@ class TableRenderer implements Renderer {
 				}
 				if (!this.firstRow) {
 					ret.add(new RenderedToken("", this.htmlRowEnd));
-					ret.add(new RenderedToken(WikiCons.NEW_LINE
-							+ this.wikiNewRow, this.htmlRowBegin));
+					ret.add(new RenderedToken(WikiCons.NEW_LINE + this.wikiNewRow, this.htmlRowBegin));
 				}
 				this.firstRow = false;
 				this.firstCell = true;
 
 				if (this.simpleTable) {
-					String str = token.getWikiText().substring(
-							this.wikiNewRow.length());
+					String str = token.getWikiText().substring(this.wikiNewRow.length());
 					ret.addAll(addNewCells(str));
 					this.firstCell = false;
 				}
 
 			} else if ((this.depth > 0) && text.startsWith(this.wikiNewCell)) {
-				String str = token.getWikiText().substring(
-						this.wikiNewCell.length());
+				String str = token.getWikiText().substring(this.wikiNewCell.length());
 				ret.addAll(addNewCells(str));
 				this.firstRow = false;
 				this.firstCell = false;

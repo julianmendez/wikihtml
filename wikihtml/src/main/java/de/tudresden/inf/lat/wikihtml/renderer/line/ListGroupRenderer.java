@@ -27,14 +27,13 @@ public class ListGroupRenderer implements Renderer {
 
 	public ListGroupRenderer() {
 		List<Renderer> list = new ArrayList<Renderer>();
-		list.add(new ListRenderer(WikiCons.ASTERISK, HTMLTag.UL_START,
-				HTMLTag.UL_END, HTMLTag.LI_START, HTMLTag.LI_END));
+		list.add(new ListRenderer(WikiCons.ASTERISK, HTMLTag.UL_START, HTMLTag.UL_END, HTMLTag.LI_START,
+				HTMLTag.LI_END));
 
-		list.add(new ListRenderer(WikiCons.COLON, HTMLTag.DL_START,
-				HTMLTag.DL_END, HTMLTag.DD_START, HTMLTag.DD_END));
+		list.add(new ListRenderer(WikiCons.COLON, HTMLTag.DL_START, HTMLTag.DL_END, HTMLTag.DD_START, HTMLTag.DD_END));
 
-		list.add(new ListRenderer(WikiCons.NUMBER_SIGN, HTMLTag.OL_START,
-				HTMLTag.OL_END, HTMLTag.LI_START, HTMLTag.LI_END));
+		list.add(new ListRenderer(WikiCons.NUMBER_SIGN, HTMLTag.OL_START, HTMLTag.OL_END, HTMLTag.LI_START,
+				HTMLTag.LI_END));
 
 		this.renderer = new MultiRenderer(list);
 	}

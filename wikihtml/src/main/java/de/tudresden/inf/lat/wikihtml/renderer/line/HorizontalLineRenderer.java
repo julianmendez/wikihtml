@@ -42,8 +42,7 @@ class HorizontalLineRenderer implements Renderer {
 	public boolean isApplicable(ConversionToken token) {
 		Objects.requireNonNull(token);
 
-		return token.getType().equals(TokenType.WIKI_LINE)
-				&& token.getWikiText().startsWith(this.wikiTextPrefix);
+		return token.getType().equals(TokenType.WIKI_LINE) && token.getWikiText().startsWith(this.wikiTextPrefix);
 	}
 
 	@Override
@@ -54,12 +53,10 @@ class HorizontalLineRenderer implements Renderer {
 		if (isApplicable(token)) {
 			String text = token.getWikiText();
 			int start = 0;
-			while ((start < text.length())
-					&& text.substring(start).startsWith(this.wikiTextPrefix)) {
+			while ((start < text.length()) && text.substring(start).startsWith(this.wikiTextPrefix)) {
 				start += this.wikiTextPrefix.length();
 			}
-			ret.add(new RenderedToken(WikiCons.NEW_LINE + this.wikiTextPrefix,
-					this.htmlTextLine));
+			ret.add(new RenderedToken(WikiCons.NEW_LINE + this.wikiTextPrefix, this.htmlTextLine));
 			if (start < text.length()) {
 				String subText = text.substring(start);
 				ret.add(new WikiLinePartToken(subText));

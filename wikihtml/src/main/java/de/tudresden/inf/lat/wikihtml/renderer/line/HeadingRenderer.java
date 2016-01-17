@@ -29,8 +29,7 @@ class HeadingRenderer implements Renderer {
 	private final String wikiTextBegin;
 	private final String wikiTextEnd;
 
-	public HeadingRenderer(String wikiTextBeginEnd, String htmlTextBegin,
-			String htmlTextEnd) {
+	public HeadingRenderer(String wikiTextBeginEnd, String htmlTextBegin, String htmlTextEnd) {
 		Objects.requireNonNull(wikiTextBeginEnd);
 		Objects.requireNonNull(htmlTextBegin);
 		Objects.requireNonNull(htmlTextEnd);
@@ -49,8 +48,7 @@ class HeadingRenderer implements Renderer {
 	public boolean isApplicable(ConversionToken token) {
 		Objects.requireNonNull(token);
 
-		return token.getType().equals(TokenType.WIKI_LINE)
-				&& token.getWikiText().startsWith(this.wikiTextBegin)
+		return token.getType().equals(TokenType.WIKI_LINE) && token.getWikiText().startsWith(this.wikiTextBegin)
 				&& token.getWikiText().trim().endsWith(this.wikiTextEnd);
 	}
 
@@ -61,10 +59,8 @@ class HeadingRenderer implements Renderer {
 		List<ConversionToken> ret = new ArrayList<>();
 		if (isApplicable(token)) {
 			String text = token.getWikiText().trim();
-			String str = text.substring(this.wikiTextBegin.length(),
-					text.length() - this.wikiTextEnd.length());
-			ret.add(new RenderedToken(WikiCons.NEW_LINE + this.wikiTextBegin,
-					this.htmlTextBegin));
+			String str = text.substring(this.wikiTextBegin.length(), text.length() - this.wikiTextEnd.length());
+			ret.add(new RenderedToken(WikiCons.NEW_LINE + this.wikiTextBegin, this.htmlTextBegin));
 			ret.add(new WikiLinePartToken(str));
 			ret.add(new RenderedToken(this.wikiTextEnd, this.htmlTextEnd));
 		} else {

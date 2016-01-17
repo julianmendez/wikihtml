@@ -29,8 +29,8 @@ class SimpleHyperlinkRenderer implements Renderer {
 	private final String wikiTextBegin;
 	private final String wikiTextEnd;
 
-	public SimpleHyperlinkRenderer(String wikiTextBegin, String wikiTextEnd,
-			String htmlTextBegin, String htmlTextMiddle, String htmlTextEnd) {
+	public SimpleHyperlinkRenderer(String wikiTextBegin, String wikiTextEnd, String htmlTextBegin,
+			String htmlTextMiddle, String htmlTextEnd) {
 		Objects.requireNonNull(wikiTextBegin);
 		Objects.requireNonNull(wikiTextEnd);
 		Objects.requireNonNull(htmlTextBegin);
@@ -51,8 +51,7 @@ class SimpleHyperlinkRenderer implements Renderer {
 
 	public boolean isApplicable(ConversionToken token) {
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
-				&& (token.getWikiText().toLowerCase()
-						.indexOf(this.wikiTextBegin) != -1);
+				&& (token.getWikiText().toLowerCase().indexOf(this.wikiTextBegin) != -1);
 	}
 
 	@Override
@@ -64,34 +63,28 @@ class SimpleHyperlinkRenderer implements Renderer {
 			String currentText = token.getWikiText();
 			boolean found = true;
 			while (found) {
-				int beginPos = currentText.toLowerCase().indexOf(
-						this.wikiTextBegin);
+				int beginPos = currentText.toLowerCase().indexOf(this.wikiTextBegin);
 				if (beginPos == -1) {
 					found = false;
 				} else {
 					{
-						String previousText = currentText
-								.substring(0, beginPos);
+						String previousText = currentText.substring(0, beginPos);
 						ret.add(new WikiLinePartToken(previousText));
 					}
 					currentText = currentText.substring(beginPos);
 
-					int linkEnd = currentText.toLowerCase().indexOf(
-							this.wikiTextEnd);
+					int linkEnd = currentText.toLowerCase().indexOf(this.wikiTextEnd);
 					String linkText = null;
 
 					if (linkEnd == -1) {
-						linkText = currentText.substring(this.wikiTextBegin
-								.length());
+						linkText = currentText.substring(this.wikiTextBegin.length());
 						currentText = "";
 					} else {
-						linkText = currentText.substring(
-								this.wikiTextBegin.length(), linkEnd);
+						linkText = currentText.substring(this.wikiTextBegin.length(), linkEnd);
 						currentText = currentText.substring(linkEnd);
 					}
 
-					ret.add(new RenderedToken(this.wikiTextBegin,
-							this.htmlTextBegin));
+					ret.add(new RenderedToken(this.wikiTextBegin, this.htmlTextBegin));
 					ret.add(new RenderedToken(linkText, linkText.toLowerCase()));
 					ret.add(new RenderedToken("", this.htmlTextMiddle));
 					ret.add(new RenderedToken("", linkText));

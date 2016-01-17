@@ -28,14 +28,11 @@ public class StyleGroupRenderer implements Renderer {
 	public StyleGroupRenderer() {
 		List<Renderer> list = new ArrayList<Renderer>();
 		final String a = WikiCons.APOSTROPHE;
-		list.add(new StyleRenderer(a + a + a + a + a,
-				HTMLTag.ITALICS_BOLD_START, HTMLTag.ITALICS_BOLD_END));
+		list.add(new StyleRenderer(a + a + a + a + a, HTMLTag.ITALICS_BOLD_START, HTMLTag.ITALICS_BOLD_END));
 
-		list.add(new StyleRenderer(a + a + a, HTMLTag.BOLD_START,
-				HTMLTag.BOLD_END));
+		list.add(new StyleRenderer(a + a + a, HTMLTag.BOLD_START, HTMLTag.BOLD_END));
 
-		list.add(new StyleRenderer(a + a, HTMLTag.ITALICS_START,
-				HTMLTag.ITALICS_END));
+		list.add(new StyleRenderer(a + a, HTMLTag.ITALICS_START, HTMLTag.ITALICS_END));
 
 		this.renderer = new MultiRenderer(list);
 	}

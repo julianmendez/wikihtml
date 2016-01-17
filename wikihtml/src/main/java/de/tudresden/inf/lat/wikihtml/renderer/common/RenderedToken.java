@@ -31,8 +31,7 @@ public class RenderedToken implements ConversionToken {
 		boolean ret = (this == o);
 		if (!ret && (o instanceof ConversionToken)) {
 			ConversionToken other = (ConversionToken) o;
-			ret = getType().equals(other.getType())
-					&& getWikiText().equals(other.getWikiText())
+			ret = getType().equals(other.getType()) && getWikiText().equals(other.getWikiText())
 					&& getHTMLText().equals(other.getHTMLText());
 		}
 		return ret;

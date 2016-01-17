@@ -8,4 +8,3 @@
  * Provides classes to start the application.
  */
 package de.tudresden.inf.lat.wikihtml.main;
-

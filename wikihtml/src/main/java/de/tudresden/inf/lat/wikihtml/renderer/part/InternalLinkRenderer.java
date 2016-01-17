@@ -32,10 +32,8 @@ class InternalLinkRenderer implements Renderer {
 	private final String wikiTextEnd;
 	private final String wikiTextMiddle;
 
-	public InternalLinkRenderer(String wikiTextBegin, String wikiTextMiddle,
-			String wikiTextEnd, String htmlTextBegin,
-			String htmlTextMiddleFirst, String htmlTextMiddleSecond,
-			String htmlTextEnd) {
+	public InternalLinkRenderer(String wikiTextBegin, String wikiTextMiddle, String wikiTextEnd, String htmlTextBegin,
+			String htmlTextMiddleFirst, String htmlTextMiddleSecond, String htmlTextEnd) {
 		Objects.requireNonNull(wikiTextBegin);
 		Objects.requireNonNull(wikiTextMiddle);
 		Objects.requireNonNull(wikiTextEnd);
@@ -55,14 +53,12 @@ class InternalLinkRenderer implements Renderer {
 
 	@Override
 	public String getDescription() {
-		return this.wikiTextBegin + "link.to" + this.wikiTextMiddle
-				+ " other pages" + this.wikiTextEnd;
+		return this.wikiTextBegin + "link.to" + this.wikiTextMiddle + " other pages" + this.wikiTextEnd;
 	}
 
 	public boolean isApplicable(ConversionToken token) {
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
-				&& (token.getWikiText().toLowerCase()
-						.indexOf(this.wikiTextBegin) != -1);
+				&& (token.getWikiText().toLowerCase().indexOf(this.wikiTextBegin) != -1);
 	}
 
 	@Override
@@ -74,57 +70,44 @@ class InternalLinkRenderer implements Renderer {
 			String currentText = token.getWikiText();
 			boolean found = true;
 			while (found) {
-				int beginPos = currentText.toLowerCase().indexOf(
-						this.wikiTextBegin);
+				int beginPos = currentText.toLowerCase().indexOf(this.wikiTextBegin);
 				if (beginPos == -1) {
 					found = false;
 				} else {
 					{
-						String previousText = currentText
-								.substring(0, beginPos);
+						String previousText = currentText.substring(0, beginPos);
 						ret.add(new WikiLinePartToken(previousText));
 					}
 					currentText = currentText.substring(beginPos);
 
-					int endPos = currentText.toLowerCase().indexOf(
-							this.wikiTextEnd, this.wikiTextBegin.length());
+					int endPos = currentText.toLowerCase().indexOf(this.wikiTextEnd, this.wikiTextBegin.length());
 					if (endPos == -1) {
 						found = false;
 					} else {
-						int linkEnd = currentText.substring(0, endPos)
-								.toLowerCase().indexOf(this.wikiTextMiddle);
+						int linkEnd = currentText.substring(0, endPos).toLowerCase().indexOf(this.wikiTextMiddle);
 						String linkText = null;
 						String descriptionText = null;
 
 						if (linkEnd == -1) {
-							linkText = currentText.substring(
-									this.wikiTextBegin.length(), endPos);
+							linkText = currentText.substring(this.wikiTextBegin.length(), endPos);
 
 							descriptionText = linkText;
 						} else {
-							linkText = currentText.substring(
-									this.wikiTextBegin.length(), linkEnd);
-							descriptionText = currentText.substring(linkEnd
-									+ this.wikiTextMiddle.length(), endPos);
+							linkText = currentText.substring(this.wikiTextBegin.length(), linkEnd);
+							descriptionText = currentText.substring(linkEnd + this.wikiTextMiddle.length(), endPos);
 						}
-						linkText = linkText.replaceAll(WikiCons.LINK_SPACE,
-								WikiCons.LINK_UNDERSCORE);
-						currentText = currentText.substring(endPos
-								+ this.wikiTextEnd.length());
+						linkText = linkText.replaceAll(WikiCons.LINK_SPACE, WikiCons.LINK_UNDERSCORE);
+						currentText = currentText.substring(endPos + this.wikiTextEnd.length());
 
-						ret.add(new RenderedToken(this.wikiTextBegin,
-								this.htmlTextBegin));
+						ret.add(new RenderedToken(this.wikiTextBegin, this.htmlTextBegin));
 						ret.add(new RenderedToken(linkText, linkText));
-						ret.add(new RenderedToken(this.wikiTextMiddle,
-								this.htmlTextMiddleFirst));
+						ret.add(new RenderedToken(this.wikiTextMiddle, this.htmlTextMiddleFirst));
 						if (!this.htmlTextMiddleSecond.isEmpty()) {
 							ret.add(new RenderedToken(linkText, linkText));
-							ret.add(new RenderedToken("",
-									this.htmlTextMiddleSecond));
+							ret.add(new RenderedToken("", this.htmlTextMiddleSecond));
 						}
 						ret.add(new WikiLinePartToken(descriptionText));
-						ret.add(new RenderedToken(this.wikiTextEnd,
-								this.htmlTextEnd));
+						ret.add(new RenderedToken(this.wikiTextEnd, this.htmlTextEnd));
 					}
 				}
 			}

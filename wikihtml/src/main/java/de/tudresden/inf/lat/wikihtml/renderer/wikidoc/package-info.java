@@ -8,4 +8,3 @@
  * Provides classes to render the whole document.
  */
 package de.tudresden.inf.lat.wikihtml.renderer.wikidoc;
-

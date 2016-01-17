@@ -20,14 +20,10 @@ import de.tudresden.inf.lat.wikihtml.renderer.wikidoc.WikiDocument;
  */
 public class Main {
 
-	public static final String HELP = "\nArguments: "
-			+ "\n  [<input file>] <output file>"
-			+ "\n\nwhere:"
+	public static final String HELP = "\nArguments: " + "\n  [<input file>] <output file>" + "\n\nwhere:"
 			+ "\n  <input file>          input file: a wiki text file or a wiki HTML file"
-			+ "\n  <output file>         output file: a wiki HTML file"
-			+ "\n\nNote: "
-			+ "\n  The input file is optional only when updating a wiki HTML file."
-			+ "\n\n";
+			+ "\n  <output file>         output file: a wiki HTML file" + "\n\nNote: "
+			+ "\n  The input file is optional only when updating a wiki HTML file." + "\n\n";
 
 	public static final void main(String[] args) throws IOException {
 		(new Main()).run(args);
@@ -43,8 +39,7 @@ public class Main {
 			// WikiDocumentRenderer()).getDescription());
 
 			String inputFile = args[0];
-			WikiDocument wikiDocument = new WikiDocument(new FileReader(
-					inputFile));
+			WikiDocument wikiDocument = new WikiDocument(new FileReader(inputFile));
 			String outputFile = null;
 			if (args.length == 2) {
 				outputFile = args[1];

@@ -5,8 +5,7 @@
  */
 
 /**
- * Provides classes to render wiki commands that are used 
- * in pieces of text that do not complete a line.
+ * Provides classes to render wiki commands that are used in pieces of text that
+ * do not complete a line.
  */
 package de.tudresden.inf.lat.wikihtml.renderer.part;
-

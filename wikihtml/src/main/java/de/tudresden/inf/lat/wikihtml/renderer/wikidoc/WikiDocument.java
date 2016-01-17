@@ -86,12 +86,10 @@ public class WikiDocument {
 		List<String> ret = new ArrayList<String>();
 		boolean extracting = false;
 		for (String line : document) {
-			if (line.toLowerCase().startsWith(
-					HTMLHeader.BEGIN_WIKI_TEXT.toLowerCase())) {
+			if (line.toLowerCase().startsWith(HTMLHeader.BEGIN_WIKI_TEXT.toLowerCase())) {
 				extracting = true;
 
-			} else if (line.toLowerCase().startsWith(
-					HTMLHeader.END_WIKI_TEXT.toLowerCase())) {
+			} else if (line.toLowerCase().startsWith(HTMLHeader.END_WIKI_TEXT.toLowerCase())) {
 				extracting = false;
 
 			} else if (extracting) {
@@ -151,9 +149,7 @@ public class WikiDocument {
 		Iterator<String> it = document.iterator();
 		while (!ret && it.hasNext()) {
 			String line = it.next();
-			ret = ret
-					|| line.toLowerCase().startsWith(
-							HTMLHeader.BEGIN_WIKI_TEXT.toLowerCase());
+			ret = ret || line.toLowerCase().startsWith(HTMLHeader.BEGIN_WIKI_TEXT.toLowerCase());
 		}
 		return ret;
 	}
@@ -187,8 +183,7 @@ public class WikiDocument {
 		return ret;
 	}
 
-	private void renderHTML(BufferedWriter writer, boolean withWikiText,
-			boolean withOriginalText) throws IOException {
+	private void renderHTML(BufferedWriter writer, boolean withWikiText, boolean withOriginalText) throws IOException {
 		writer.write(HTMLHeader.HTML_PREFIX_1);
 		writer.newLine();
 
@@ -242,15 +237,13 @@ public class WikiDocument {
 		return revertNowikiTag(renderWikiTokens(renderDocument(prepareDocument(this.wikiDocument))));
 	}
 
-	private List<ConversionToken> renderWikiTokens(
-			List<ConversionToken> document) {
+	private List<ConversionToken> renderWikiTokens(List<ConversionToken> document) {
 		List<ConversionToken> ret = new ArrayList<>();
 		for (ConversionToken token : document) {
 			if (token.getType().equals(TokenType.HTML_TEXT)) {
 				ret.add(token);
 			} else {
-				ret.add(new RenderedToken(token.getWikiText(), token
-						.getWikiText()));
+				ret.add(new RenderedToken(token.getWikiText(), token.getWikiText()));
 			}
 		}
 		return ret;

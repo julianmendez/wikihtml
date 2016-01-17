@@ -8,4 +8,3 @@
  * Provides shared constants.
  */
 package de.tudresden.inf.lat.wikihtml.common;
-

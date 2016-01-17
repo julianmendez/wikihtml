@@ -28,8 +28,7 @@ class StyleRenderer implements Renderer {
 	private final String wikiTextBegin;
 	private final String wikiTextEnd;
 
-	public StyleRenderer(String wikiTextBeginEnd, String htmlTextBegin,
-			String htmlTextEnd) {
+	public StyleRenderer(String wikiTextBeginEnd, String htmlTextBegin, String htmlTextEnd) {
 		Objects.requireNonNull(wikiTextBeginEnd);
 		Objects.requireNonNull(htmlTextBegin);
 		Objects.requireNonNull(htmlTextEnd);
@@ -47,8 +46,7 @@ class StyleRenderer implements Renderer {
 
 	public boolean isApplicable(ConversionToken token) {
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
-				&& (token.getWikiText().toLowerCase()
-						.indexOf(this.wikiTextBegin) != -1);
+				&& (token.getWikiText().toLowerCase().indexOf(this.wikiTextBegin) != -1);
 	}
 
 	@Override
@@ -60,38 +58,30 @@ class StyleRenderer implements Renderer {
 			String currentText = token.getWikiText();
 			boolean found = true;
 			while (found) {
-				int beginPos = currentText.toLowerCase().indexOf(
-						this.wikiTextBegin);
+				int beginPos = currentText.toLowerCase().indexOf(this.wikiTextBegin);
 				if (beginPos == -1) {
 					found = false;
 				} else {
 					{
-						String previousText = currentText
-								.substring(0, beginPos);
+						String previousText = currentText.substring(0, beginPos);
 						ret.add(new WikiLinePartToken(previousText));
 					}
 					currentText = currentText.substring(beginPos);
 
 					String subText = null;
-					int endPos = currentText.toLowerCase().indexOf(
-							this.wikiTextEnd, this.wikiTextBegin.length());
+					int endPos = currentText.toLowerCase().indexOf(this.wikiTextEnd, this.wikiTextBegin.length());
 					if (endPos == -1) {
 						found = false;
-						subText = currentText.substring(this.wikiTextBegin
-								.length());
+						subText = currentText.substring(this.wikiTextBegin.length());
 						currentText = "";
 					} else {
-						subText = currentText.substring(
-								this.wikiTextBegin.length(), endPos);
-						currentText = currentText.substring(endPos
-								+ this.wikiTextEnd.length());
+						subText = currentText.substring(this.wikiTextBegin.length(), endPos);
+						currentText = currentText.substring(endPos + this.wikiTextEnd.length());
 					}
 
-					ret.add(new RenderedToken(this.wikiTextBegin,
-							this.htmlTextBegin));
+					ret.add(new RenderedToken(this.wikiTextBegin, this.htmlTextBegin));
 					ret.add(new WikiLinePartToken(subText));
-					ret.add(new RenderedToken(this.wikiTextEnd,
-							this.htmlTextEnd));
+					ret.add(new RenderedToken(this.wikiTextEnd, this.htmlTextEnd));
 				}
 			}
 			ret.add(new WikiLinePartToken(currentText));

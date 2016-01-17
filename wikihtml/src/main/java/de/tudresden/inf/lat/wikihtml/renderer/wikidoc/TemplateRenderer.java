@@ -46,8 +46,7 @@ public class TemplateRenderer implements Renderer {
 		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
-				&& (token.getWikiText().toLowerCase()
-						.indexOf(WikiCons.TEMPLATE_BEGIN) != -1);
+				&& (token.getWikiText().toLowerCase().indexOf(WikiCons.TEMPLATE_BEGIN) != -1);
 	}
 
 	@Override
@@ -58,22 +57,17 @@ public class TemplateRenderer implements Renderer {
 		if (isApplicable(token)) {
 			boolean applied = false;
 			String currentText = token.getWikiText();
-			int start = currentText.toLowerCase().indexOf(
-					WikiCons.TEMPLATE_BEGIN);
+			int start = currentText.toLowerCase().indexOf(WikiCons.TEMPLATE_BEGIN);
 			if (start != -1) {
-				int end = currentText.toLowerCase().indexOf(
-						WikiCons.TEMPLATE_END,
+				int end = currentText.toLowerCase().indexOf(WikiCons.TEMPLATE_END,
 						start + WikiCons.TEMPLATE_BEGIN.length());
 				if (end != -1) {
 					applied = true;
 
-					ret.add(new WikiLinePartToken(currentText.substring(0,
-							start)));
+					ret.add(new WikiLinePartToken(currentText.substring(0, start)));
 
-					String resourceName = currentText.substring(start
-							+ WikiCons.TEMPLATE_BEGIN.length(), end);
-					String resource = WikiCons.TEMPLATE_BEGIN + resourceName
-							+ WikiCons.TEMPLATE_END;
+					String resourceName = currentText.substring(start + WikiCons.TEMPLATE_BEGIN.length(), end);
+					String resource = WikiCons.TEMPLATE_BEGIN + resourceName + WikiCons.TEMPLATE_END;
 					URL url = null;
 					Reader reader = null;
 					WikiDocument document;
@@ -82,25 +76,21 @@ public class TemplateRenderer implements Renderer {
 						try {
 							url = new URL(resourceName);
 							URLConnection conn = url.openConnection();
-							reader = new InputStreamReader(
-									conn.getInputStream());
+							reader = new InputStreamReader(conn.getInputStream());
 
 						} catch (MalformedURLException e) {
 							reader = new FileReader(resourceName);
 
 						}
 						document = new WikiDocument(reader);
-						ret.add(new RenderedToken(resource, document
-								.renderToString()));
+						ret.add(new RenderedToken(resource, document.renderToString()));
 
 					} catch (IOException e) {
-						ret.add(new RenderedToken(resource, ERROR_MESSAGE_BEGIN
-								+ sanitizeHTMLComment(resource)
-								+ ERROR_MESSAGE_END));
+						ret.add(new RenderedToken(resource,
+								ERROR_MESSAGE_BEGIN + sanitizeHTMLComment(resource) + ERROR_MESSAGE_END));
 					}
 
-					ret.add(new WikiLinePartToken(currentText.substring(end
-							+ WikiCons.TEMPLATE_END.length())));
+					ret.add(new WikiLinePartToken(currentText.substring(end + WikiCons.TEMPLATE_END.length())));
 				}
 			}
 

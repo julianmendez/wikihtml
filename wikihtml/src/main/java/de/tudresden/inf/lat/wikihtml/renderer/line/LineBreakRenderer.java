@@ -37,8 +37,7 @@ public class LineBreakRenderer implements Renderer {
 	public boolean isApplicable(ConversionToken token) {
 		Objects.requireNonNull(token);
 
-		return token.getType().equals(TokenType.WIKI_LINE)
-				&& token.getWikiText().trim().isEmpty();
+		return token.getType().equals(TokenType.WIKI_LINE) && token.getWikiText().trim().isEmpty();
 	}
 
 	@Override

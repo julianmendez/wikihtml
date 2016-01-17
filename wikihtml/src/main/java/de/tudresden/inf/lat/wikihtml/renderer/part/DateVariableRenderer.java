@@ -48,10 +48,9 @@ public class DateVariableRenderer implements Renderer {
 	private static final String DF_YEAR = "yyyy";
 	private static final String GMT = "GMT";
 	private static final String LOCAL = "LOCAL";
-	private static final String Z_CURRENTDOW_ID = WikiCons.VAR_BEGIN + CURRENT
-			+ VarName.DOW.toString() + WikiCons.VAR_END;
-	private static final String Z_LOCALDOW_ID = WikiCons.VAR_BEGIN + LOCAL
-			+ VarName.DOW.toString() + WikiCons.VAR_END;
+	private static final String Z_CURRENTDOW_ID = WikiCons.VAR_BEGIN + CURRENT + VarName.DOW.toString()
+			+ WikiCons.VAR_END;
+	private static final String Z_LOCALDOW_ID = WikiCons.VAR_BEGIN + LOCAL + VarName.DOW.toString() + WikiCons.VAR_END;
 
 	private final Map<String, SimpleDateFormat> translationMap;
 
@@ -80,8 +79,7 @@ public class DateVariableRenderer implements Renderer {
 
 	@Override
 	public String getDescription() {
-		return WikiCons.VAR_BEGIN + CURRENT + VarName.TIMESTAMP
-				+ WikiCons.VAR_END + " (date variables)";
+		return WikiCons.VAR_BEGIN + CURRENT + VarName.TIMESTAMP + WikiCons.VAR_END + " (date variables)";
 	}
 
 	private int getLocalDayOfWeek(Date date) {
@@ -94,20 +92,17 @@ public class DateVariableRenderer implements Renderer {
 		Objects.requireNonNull(token);
 
 		return token.getType().equals(TokenType.WIKI_LINE_PART)
-				&& (token.getWikiText().toLowerCase()
-						.indexOf(WikiCons.VAR_BEGIN) != -1);
+				&& (token.getWikiText().toLowerCase().indexOf(WikiCons.VAR_BEGIN) != -1);
 	}
 
-	private void put(Map<String, SimpleDateFormat> map, VarName varName,
-			String dateFormatStr) {
+	private void put(Map<String, SimpleDateFormat> map, VarName varName, String dateFormatStr) {
 
-		map.put(WikiCons.VAR_BEGIN + LOCAL + varName.toString()
-				+ WikiCons.VAR_END, new SimpleDateFormat(dateFormatStr));
+		map.put(WikiCons.VAR_BEGIN + LOCAL + varName.toString() + WikiCons.VAR_END,
+				new SimpleDateFormat(dateFormatStr));
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
 		dateFormat.setTimeZone(TimeZone.getTimeZone(GMT));
-		map.put(WikiCons.VAR_BEGIN + CURRENT + varName.toString()
-				+ WikiCons.VAR_END, dateFormat);
+		map.put(WikiCons.VAR_BEGIN + CURRENT + varName.toString() + WikiCons.VAR_END, dateFormat);
 	}
 
 	@Override
@@ -125,13 +120,10 @@ public class DateVariableRenderer implements Renderer {
 		if (isApplicable(token)) {
 			String currentText = token.getWikiText();
 			for (String key : this.translationMap.keySet()) {
-				currentText = replaceAll(currentText, key, this.translationMap
-						.get(key).format(date));
+				currentText = replaceAll(currentText, key, this.translationMap.get(key).format(date));
 			}
-			currentText = replaceAll(currentText, Z_CURRENTDOW_ID, ""
-					+ getCurrentDayOfWeek(date));
-			currentText = replaceAll(currentText, Z_LOCALDOW_ID, ""
-					+ getLocalDayOfWeek(date));
+			currentText = replaceAll(currentText, Z_CURRENTDOW_ID, "" + getCurrentDayOfWeek(date));
+			currentText = replaceAll(currentText, Z_LOCALDOW_ID, "" + getLocalDayOfWeek(date));
 
 			ret.add(new WikiLinePartToken(currentText));
 

@@ -47,17 +47,14 @@ public class InverseNowikiRenderer implements Renderer {
 
 	@Override
 	public String getDescription() {
-		return HTMLTag.NOWIKI_START
-				+ "replacement of HTML character entities by nowiki tags"
-				+ HTMLTag.NOWIKI_END;
+		return HTMLTag.NOWIKI_START + "replacement of HTML character entities by nowiki tags" + HTMLTag.NOWIKI_END;
 	}
 
 	public boolean isApplicable(ConversionToken token) {
 		boolean ret = false;
 		if (token.getType().equals(TokenType.HTML_TEXT)) {
 			String text = token.getWikiText();
-			for (Iterator<String> it = this.map.keySet().iterator(); !ret
-					&& it.hasNext();) {
+			for (Iterator<String> it = this.map.keySet().iterator(); !ret && it.hasNext();) {
 				String key = it.next();
 				ret |= text.indexOf(key) != -1;
 			}
@@ -74,8 +71,7 @@ public class InverseNowikiRenderer implements Renderer {
 
 		boolean simplifying = true;
 		while (simplifying) {
-			String newText = ret.replaceAll(HTMLTag.NOWIKI_END
-					+ HTMLTag.NOWIKI_START, "");
+			String newText = ret.replaceAll(HTMLTag.NOWIKI_END + HTMLTag.NOWIKI_START, "");
 			simplifying = (newText.length() < ret.length());
 			if (simplifying) {
 				ret = newText;

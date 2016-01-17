@@ -29,16 +29,13 @@ public class NowikiRenderer implements Renderer {
 
 	@Override
 	public String getDescription() {
-		return HTMLTag.NOWIKI_START + "text without wiki markup"
-				+ HTMLTag.NOWIKI_END;
+		return HTMLTag.NOWIKI_START + "text without wiki markup" + HTMLTag.NOWIKI_END;
 	}
 
 	public boolean isApplicable(ConversionToken token) {
 		return this.nowikiMode
-				|| ((token.getType().equals(TokenType.WIKI_LINE) || token
-						.getType().equals(TokenType.WIKI_LINE_PART)) && ((token
-						.getWikiText().toLowerCase()
-						.indexOf(HTMLTag.NOWIKI_START) != -1)));
+				|| ((token.getType().equals(TokenType.WIKI_LINE) || token.getType().equals(TokenType.WIKI_LINE_PART))
+						&& ((token.getWikiText().toLowerCase().indexOf(HTMLTag.NOWIKI_START) != -1)));
 	}
 
 	public boolean isNowikiMode() {
@@ -47,14 +44,10 @@ public class NowikiRenderer implements Renderer {
 
 	public String normalize(String text) {
 		text = text.replaceAll(WikiCons.NUMBER_SIGN, WikiCons.NUMBER_SIGN_U);
-		text = text.replaceAll(WikiCons.AMPERSAND_NUMBER_SIGN_U,
-				WikiCons.AMPERSAND_NUMBER_SIGN);
-		text = text.replaceAll(WikiCons.AMPERSAND + WikiCons.SPACE,
-				WikiCons.AMPERSAND_U + WikiCons.SPACE);
+		text = text.replaceAll(WikiCons.AMPERSAND_NUMBER_SIGN_U, WikiCons.AMPERSAND_NUMBER_SIGN);
+		text = text.replaceAll(WikiCons.AMPERSAND + WikiCons.SPACE, WikiCons.AMPERSAND_U + WikiCons.SPACE);
 		if (text.endsWith(WikiCons.AMPERSAND)) {
-			text = text.substring(0,
-					text.length() - WikiCons.AMPERSAND.length())
-					+ WikiCons.AMPERSAND_U;
+			text = text.substring(0, text.length() - WikiCons.AMPERSAND.length()) + WikiCons.AMPERSAND_U;
 		}
 		text = text.replaceAll(WikiCons.ASTERISK_E, WikiCons.ASTERISK_U);
 		text = text.replaceAll(WikiCons.APOSTROPHE, WikiCons.APOSTROPHE_U);
@@ -62,18 +55,13 @@ public class NowikiRenderer implements Renderer {
 		text = text.replaceAll(WikiCons.HYPHEN_MINUS, WikiCons.HYPHEN_MINUS_U);
 		text = text.replaceAll(WikiCons.SLASH, WikiCons.SLASH_U);
 		text = text.replaceAll(WikiCons.COLON, WikiCons.COLON_U);
-		text = text.replaceAll(WikiCons.LESS_THAN_SIGN,
-				WikiCons.LESS_THAN_SIGN_U);
+		text = text.replaceAll(WikiCons.LESS_THAN_SIGN, WikiCons.LESS_THAN_SIGN_U);
 		text = text.replaceAll(WikiCons.EQUAL_SIGN, WikiCons.EQUAL_SIGN_U);
-		text = text.replaceAll(WikiCons.GREATER_THAN_SIGN,
-				WikiCons.GREATER_THAN_SIGN_U);
+		text = text.replaceAll(WikiCons.GREATER_THAN_SIGN, WikiCons.GREATER_THAN_SIGN_U);
 		text = text.replaceAll(WikiCons.BACKSLASH_E, WikiCons.BACKSLASH_U);
-		text = text.replaceAll(WikiCons.LEFT_CURLY_BRACKET_E,
-				WikiCons.LEFT_CURLY_BRACKET_U);
-		text = text
-				.replaceAll(WikiCons.VERTICAL_BAR_E, WikiCons.VERTICAL_BAR_U);
-		text = text.replaceAll(WikiCons.RIGHT_CURLY_BRACKET_E,
-				WikiCons.RIGHT_CURLY_BRACKET_U);
+		text = text.replaceAll(WikiCons.LEFT_CURLY_BRACKET_E, WikiCons.LEFT_CURLY_BRACKET_U);
+		text = text.replaceAll(WikiCons.VERTICAL_BAR_E, WikiCons.VERTICAL_BAR_U);
+		text = text.replaceAll(WikiCons.RIGHT_CURLY_BRACKET_E, WikiCons.RIGHT_CURLY_BRACKET_U);
 		text = text.replaceAll(WikiCons.TILDE, WikiCons.TILDE_U);
 		return text;
 	}
@@ -91,28 +79,20 @@ public class NowikiRenderer implements Renderer {
 			while (found) {
 				found = false;
 
-				if (!this.nowikiMode
-						&& (currentText.toLowerCase().indexOf(
-								HTMLTag.NOWIKI_START.toLowerCase()) != -1)) {
+				if (!this.nowikiMode && (currentText.toLowerCase().indexOf(HTMLTag.NOWIKI_START.toLowerCase()) != -1)) {
 					found = true;
 					this.nowikiMode = true;
-					int pos = currentText.toLowerCase().indexOf(
-							HTMLTag.NOWIKI_START.toLowerCase());
+					int pos = currentText.toLowerCase().indexOf(HTMLTag.NOWIKI_START.toLowerCase());
 					newText += currentText.substring(0, pos);
-					currentText = currentText.substring(pos
-							+ HTMLTag.NOWIKI_START.length());
+					currentText = currentText.substring(pos + HTMLTag.NOWIKI_START.length());
 				}
 
-				if (this.nowikiMode
-						&& (currentText.toLowerCase().indexOf(
-								HTMLTag.NOWIKI_END.toLowerCase()) != -1)) {
+				if (this.nowikiMode && (currentText.toLowerCase().indexOf(HTMLTag.NOWIKI_END.toLowerCase()) != -1)) {
 					found = true;
 					this.nowikiMode = false;
-					int pos = currentText.toLowerCase().indexOf(
-							HTMLTag.NOWIKI_END.toLowerCase());
+					int pos = currentText.toLowerCase().indexOf(HTMLTag.NOWIKI_END.toLowerCase());
 					newText += normalize(currentText.substring(0, pos));
-					currentText = currentText.substring(pos
-							+ HTMLTag.NOWIKI_END.length());
+					currentText = currentText.substring(pos + HTMLTag.NOWIKI_END.length());
 
 				}
 
