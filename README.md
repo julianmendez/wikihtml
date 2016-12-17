@@ -268,7 +268,7 @@ The following MediaWiki variables are implemented:
 |<tt>&#x7B;{CURRENTYEAR}}</tt>      |	`2016`         |	Returns the current year.                                            |
 |<tt>&#x7B;{CURRENTTIMESTAMP}}</tt> |	`20160101160345` |	ISO 8601 time stamp                                                |
 
-In addition, the ``{{LOCAL...}}`` variables are also implemented:<tt>&#x7B;{LOCALDAY}}<tt>, <tt>&#x7B;{LOCALDAY2}}</tt>, ... , <tt>&#x7B;{LOCALTIMESTAMP}}</tt>. For example, in UTC+1 <tt>&#x7B;{CURRENTTIMESTAMP}}</tt> returns `20160101160345`, while <tt>&#x7B;{LOCALTIMESTAMP}}</tt> returns `20160101170345`.  	
+In addition, the <tt>&#x7B;{LOCAL...}}</tt> variables are also implemented:<tt>&#x7B;{LOCALDAY}}</tt>, <tt>&#x7B;{LOCALDAY2}}</tt>, ... , <tt>&#x7B;{LOCALTIMESTAMP}}</tt>. For example, in UTC+1 <tt>&#x7B;{CURRENTTIMESTAMP}}</tt> returns `20160101160345`, while <tt>&#x7B;{LOCALTIMESTAMP}}</tt> returns `20160101170345`.  	
 
 
 #### HTML
