@@ -191,7 +191,7 @@ The double square brackets ([[ ]]) are rendered as local links.
 
 This wiki text:
 
-```html
+```
 {| border="1"
 | 4 || 9 || 2
 |-
@@ -225,7 +225,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 * using comma:
 
-```markdown
+```
 {||, border="1"
 4,9,2
 3,5,7
@@ -235,7 +235,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 * using tabs:
 
-```xml
+```
 {|| border="1"
 4  9  2
 3  5  7
