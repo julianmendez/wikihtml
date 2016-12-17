@@ -294,7 +294,7 @@ The file [mupuzzle.text](https://github.com/julianmendez/wikihtml/blob/master/wi
 
 and is translated to the following HTML document:
 
-```HTML
+```html
 <?xml version="1.0" encoding="utf-8"?>
 <!--begin_wiki_text
 == MIU system  ==
