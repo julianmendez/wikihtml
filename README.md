@@ -255,18 +255,18 @@ The following MediaWiki variables are implemented:
 
 | name                     | example           | meaning                                                                     |
 |:-------------------------|:------------------|:----------------------------------------------------------------------------|
-| `{{``CURRENTDAY}}`         |	`1`              |	Displays the current day in numeric form.                                  |
-| `{{``CURRENTDAY2}}`        |	`01`             |	Same as `{{``CURRENTDAY}}`, but with leading zero (01 .. 31).                |
-| `{{``CURRENTDAYNAME}}`     |	`Friday`         |	Name of the day in the language of the project or English.                 |
-| `{{``CURRENTDOW}}`         |	`5`              |	Same as `{{``CURRENTDAYNAME}}`, but as a number (0=Sunday, 1=Monday...).     |
-| `{{``CURRENTMONTH}}`       |	`01`             |	The number 01 .. 12 of the month.                                          |
-| `{{``CURRENTMONTHABBREV}}` |	`Jan`            |	Same as `{{``CURRENTMONTH}}`, but in abbreviated form as Jan .. Dec.         |
-| `{{``CURRENTMONTHNAME}}`   |	`January`        |	Same as `{{``CURRENTMONTH}}`, but in named form January .. December.         |
-| `{{``CURRENTTIME}}`        |	`16:03`          |	The current time (00:00 .. 23:59).                                         |
-| `{{``CURRENTHOUR}}`        |	`16`             |	The current hour (00 .. 23).                                               |
-| `{{``CURRENTWEEK}}`        |	`1`            |	Number of the current week (1-53) according to ISO 8601 with no leading zero.|
-| `{{``CURRENTYEAR}}`        |	`2016`           |	Returns the current year.                                                  |
-| `{{``CURRENTTIMESTAMP}}`   |	`20160101160345` |	ISO 8601 time stamp                                                        |
+| `{{CURRENTDAY}}`         |	`1`              |	Displays the current day in numeric form.                                  |
+| `{{CURRENTDAY2}}`        |	`01`             |	Same as `{{CURRENTDAY}}`, but with leading zero (01 .. 31).                |
+| `{{CURRENTDAYNAME}}`     |	`Friday`         |	Name of the day in the language of the project or English.                 |
+| `{{CURRENTDOW}}`         |	`5`              |	Same as `{{CURRENTDAYNAME}}`, but as a number (0=Sunday, 1=Monday...).     |
+| `{{CURRENTMONTH}}`       |	`01`             |	The number 01 .. 12 of the month.                                          |
+| `{{CURRENTMONTHABBREV}}` |	`Jan`            |	Same as `{{CURRENTMONTH}}`, but in abbreviated form as Jan .. Dec.         |
+| `{{CURRENTMONTHNAME}}`   |	`January`        |	Same as `{{CURRENTMONTH}}`, but in named form January .. December.         |
+| `{{CURRENTTIME}}`        |	`16:03`          |	The current time (00:00 .. 23:59).                                         |
+| `{{CURRENTHOUR}}`        |	`16`             |	The current hour (00 .. 23).                                               |
+| `{{CURRENTWEEK}}`        |	`1`            |	Number of the current week (1-53) according to ISO 8601 with no leading zero.|
+| `{{CURRENTYEAR}}`        |	`2016`           |	Returns the current year.                                                  |
+| `{{CURRENTTIMESTAMP}}`   |	`20160101160345` |	ISO 8601 time stamp                                                        |
 
 In addition, the ``{{LOCAL...}}`` variables are also implemented:`{{LOCALDAY}}`, `{{LOCALDAY2}}`, ... , `{{LOCALTIMESTAMP}}`. For example, in UTC+1 `{{CURRENTTIMESTAMP}}` returns `20160101160345`, while `{{LOCALTIMESTAMP}}` returns `20160101170345`.  	
 
