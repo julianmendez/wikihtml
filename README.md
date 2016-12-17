@@ -215,7 +215,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 * using semicolon:
 
-```json
+```
 {||; border="1"
 4;9;2
 3;5;7
