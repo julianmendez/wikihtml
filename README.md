@@ -255,8 +255,8 @@ The following MediaWiki variables are implemented:
 
 | name                     | example           | meaning                                                                     |
 |:-------------------------|:------------------|:----------------------------------------------------------------------------|
-| <tt>{{CURRENTDAY}}</tt>         |	`1`              |	Displays the current day in numeric form.                                  |
-| `{ {CURRENTDAY2}}`        |	`01`             |	Same as `{{CURRENTDAY}}`, but with leading zero (01 .. 31).                |
+| <tt>{</tt>`{CURRENTDAY}}`    |	`1`              |	Displays the current day in numeric form.                                  |
+| <tt>{</tt>`{CURRENTDAY2}}`        |	`01`             |	Same as `{{CURRENTDAY}}`, but with leading zero (01 .. 31).                |
 | `{ {CURRENTDAYNAME}}`     |	`Friday`         |	Name of the day in the language of the project or English.                 |
 | `{ {CURRENTDOW}}`         |	`5`              |	Same as `{{CURRENTDAYNAME}}`, but as a number (0=Sunday, 1=Monday...).     |
 | `{ {CURRENTMONTH}}`       |	`01`             |	The number 01 .. 12 of the month.                                          |
