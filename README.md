@@ -12,6 +12,7 @@
 * [executable JAR file](https://sourceforge.net/projects/latitude/files/wikihtml/0.1.0/wikihtml-0.1.0.jar/download)
 * [The Central Repository](https://repo1.maven.org/maven2/de/tu-dresden/inf/lat/wikihtml/)
 * as dependency:
+
 ```xml
 <dependency>
   <groupId>de.tu-dresden.inf.lat.wikihtml</groupId>
@@ -23,13 +24,17 @@
 ## Use
 
 It can be used as a Java library or from the command line. For example, use:
+
 ```
 java -jar wikihtml-0.1.0.jar inputfile.text outputfile.html
 ```
+
 to create a new HTML file from the command line, and use
+
 ```
 java -jar wikihtml-0.1.0.jar inputoutputfile.html
 ```
+
 to just update an HTML file with embedded wiki text.
 
 
@@ -61,22 +66,29 @@ Sections are marked at the beginning of a line. The heading should be between a 
 #### Line breaks
 
 A new line is marked with two new lines. For example,
+
 ```
 Two lines
 together
 are not considered different lines.
 ```
+
 is rendered
+
 ```
 Two lines together are not considered different lines.
 ```
+
 but:
+
 ```
 One line.
 
 Another line.
 ```
+
 is rendered
+
 ```
 One line.
 Another line.
@@ -86,6 +98,7 @@ Another line.
 #### Indented text
 
 Text can be indented using colons (:) at the beginning of the line. For example:
+
 ```
 : item 1
 : item 2
@@ -94,7 +107,9 @@ Text can be indented using colons (:) at the beginning of the line. For example:
 ::: item 2.2.1
 : item 3
 ```
+
 produces:
+
 ```
    item 1
    item 2
@@ -109,6 +124,7 @@ produces:
 #### Unordered lists
 
 Items in a list are marked with asterisks (*) at the beginning of the line. A subitem is marked with more asterisks. For example:
+
 ```
 * item 1
 * item 2
@@ -131,6 +147,7 @@ is rendered as
 #### Ordered lists
 
 Numbered items are marked with hash signs (#) at the beginning of the line. A subitem is marked with more hash signs. For example:
+
 ```
 # item 1
 # item 2
@@ -196,6 +213,7 @@ produces the following table:
 The following wiki text is not implemented in MediaWiki, but it also produces the same table:
 
 * using semicolon:
+
 ```
 {||; border="1"
 4;9;2
@@ -205,6 +223,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 ```
 
 * using comma:
+
 ```
 {||, border="1"
 4,9,2
@@ -214,6 +233,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 ```
 
 * using tabs:
+
 ```
 {|| border="1"
 4  9  2
@@ -260,6 +280,7 @@ HTML code can also be inserted directly. For example:
 ## Example
 
 The file [mupuzzle.text](https://github.com/julianmendez/wikihtml/blob/master/wikihtml/src/test/resources/mupuzzle.text) has the following wiki text:
+
 ```
 == MIU system  ==
 (see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
@@ -269,7 +290,9 @@ The file [mupuzzle.text](https://github.com/julianmendez/wikihtml/blob/master/wi
 # ''x''III''y'' &rarr; ''x''U''y'' 
 # ''x''UU''y'' &rarr; ''xy''
 ```
+
 and is translated to the following HTML document:
+
 ```HTML
 <?xml version="1.0" encoding="utf-8"?>
 <!--begin_wiki_text
@@ -318,36 +341,46 @@ The file [example.text](https://github.com/julianmendez/wikihtml/blob/master/wik
 ## Source code
 
 To checkout and compile the project, use:
+
 ```
 $ git clone https://github.com/julianmendez/wikihtml.git
 $ cd wikihtml
 $ mvn clean install
 ```
+
 The created executable library, its sources, and its Javadoc will be in `wikihtml/target`.
 
 To compile the project offline, first download the dependencies:
+
 ```
 $ mvn dependency:go-offline
 ```
+
 and once offline, use:
+
 ```
 $ mvn --offline clean install
 ```
 
 The bundles uploaded to [Sonatype](https://oss.sonatype.org/) are created with:
+
 ```
 $ mvn clean install -DperformRelease=true
 ```
+
 and then:
+
 ```
 $ cd wikihtml/target
 $ jar -cf bundle.jar wikihtml-*
 ```
 
 The version number is updated with:
+
 ```
 $ mvn versions:set -DnewVersion=NEW_VERSION
 ```
+
 where *NEW_VERSION* is the new version.
 
 
@@ -362,10 +395,12 @@ For example, all variables are processed by `...part.DateVariableRenderer`, but 
 
 
 ## Author
+
 [Julian Mendez](http://lat.inf.tu-dresden.de/~mendez/)
 
 
 ## Licenses
+
 [Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.txt)
 
 
