@@ -215,7 +215,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 * using semicolon:
 
-```xml
+```markdown
 {||; border="1"
 4;9;2
 3;5;7
@@ -225,7 +225,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 * using comma:
 
-```html
+```markdown
 {||, border="1"
 4,9,2
 3,5,7
@@ -235,7 +235,7 @@ The following wiki text is not implemented in MediaWiki, but it also produces th
 
 * using tabs:
 
-```
+```markdown
 {|| border="1"
 4  9  2
 3  5  7
