@@ -26,7 +26,7 @@ public class ListGroupRenderer implements Renderer {
 	private final MultiRenderer renderer;
 
 	public ListGroupRenderer() {
-		List<Renderer> list = new ArrayList<Renderer>();
+		List<Renderer> list = new ArrayList<>();
 		list.add(new ListRenderer(WikiCons.ASTERISK, HTMLTag.UL_START, HTMLTag.UL_END, HTMLTag.LI_START,
 				HTMLTag.LI_END));
 

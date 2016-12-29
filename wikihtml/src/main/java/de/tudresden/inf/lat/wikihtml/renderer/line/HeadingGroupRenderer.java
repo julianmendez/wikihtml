@@ -26,7 +26,7 @@ public class HeadingGroupRenderer implements Renderer {
 	private final MultiRenderer renderer;
 
 	public HeadingGroupRenderer() {
-		List<Renderer> list = new ArrayList<Renderer>();
+		List<Renderer> list = new ArrayList<>();
 		final String e = WikiCons.EQUAL_SIGN;
 		list.add(new HeadingRenderer(e + e + e + e + e + e, HTMLTag.H6_START, HTMLTag.H6_END));
 

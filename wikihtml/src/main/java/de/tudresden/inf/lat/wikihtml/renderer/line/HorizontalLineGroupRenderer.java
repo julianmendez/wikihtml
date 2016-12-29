@@ -25,7 +25,7 @@ public class HorizontalLineGroupRenderer implements Renderer {
 	private final MultiRenderer renderer;
 
 	public HorizontalLineGroupRenderer() {
-		List<Renderer> list = new ArrayList<Renderer>();
+		List<Renderer> list = new ArrayList<>();
 		final String m = WikiCons.HYPHEN_MINUS;
 		final String s = WikiCons.SPACE;
 

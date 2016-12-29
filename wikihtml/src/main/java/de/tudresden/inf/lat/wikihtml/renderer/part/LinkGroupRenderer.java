@@ -24,7 +24,7 @@ public class LinkGroupRenderer implements Renderer {
 	private final MultiRenderer renderer;
 
 	public LinkGroupRenderer() {
-		List<Renderer> list = new ArrayList<Renderer>();
+		List<Renderer> list = new ArrayList<>();
 		list.add(new InternalLinkRenderer("[[image:", "|", "]]", "<img src=\"", "\" alt=\"", "\" />", ""));
 
 		list.add(new InternalLinkRenderer("[[file:", "|", "]]", "<img src=\"", "\" alt=\"", "\" />", ""));

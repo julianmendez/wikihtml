@@ -41,7 +41,7 @@ public class WikiDocument {
 
 	public WikiDocument() {
 		this.isWikiHTML = false;
-		this.wikiDocument = new ArrayList<String>();
+		this.wikiDocument = new ArrayList<>();
 	}
 
 	public WikiDocument(Reader reader) throws IOException {
@@ -79,7 +79,7 @@ public class WikiDocument {
 	}
 
 	private List<String> extractWikiText(List<String> document) {
-		List<String> ret = new ArrayList<String>();
+		List<String> ret = new ArrayList<>();
 		boolean extracting = false;
 		for (String line : document) {
 			if (line.toLowerCase().startsWith(HTMLHeader.BEGIN_WIKI_TEXT.toLowerCase())) {
@@ -159,7 +159,7 @@ public class WikiDocument {
 	}
 
 	private List<String> readDocument(Reader input) {
-		List<String> ret = new ArrayList<String>();
+		List<String> ret = new ArrayList<>();
 		BufferedReader reader = new BufferedReader(input);
 		reader.lines().forEach(line -> ret.add(line));
 		return ret;

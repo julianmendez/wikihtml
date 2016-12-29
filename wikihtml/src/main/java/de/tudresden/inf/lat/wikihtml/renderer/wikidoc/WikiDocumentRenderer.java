@@ -43,7 +43,7 @@ public class WikiDocumentRenderer implements Renderer {
 	}
 
 	public List<Renderer> getRendererList() {
-		List<Renderer> ret = new ArrayList<Renderer>();
+		List<Renderer> ret = new ArrayList<>();
 
 		ret.add(new NowikiRenderer());
 		ret.add(new TableGroupRenderer());
