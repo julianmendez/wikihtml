@@ -60,11 +60,7 @@ public class WikiDocument {
 
 		StringReader reader = new StringReader(document);
 		List<String> listOfLines = null;
-		try {
-			listOfLines = readDocument(reader);
-		} catch (IOException e) {
-			throw new IllegalStateException(e);
-		}
+		listOfLines = readDocument(reader);
 		this.isWikiHTML = isWikiHTMLDocument(listOfLines);
 		if (this.isWikiHTML) {
 			listOfLines = extractWikiText(listOfLines);
@@ -162,16 +158,10 @@ public class WikiDocument {
 		return ret;
 	}
 
-	private List<String> readDocument(Reader input) throws IOException {
+	private List<String> readDocument(Reader input) {
 		List<String> ret = new ArrayList<String>();
 		BufferedReader reader = new BufferedReader(input);
-		String line = "";
-		while (line != null) {
-			line = reader.readLine();
-			if (line != null) {
-				ret.add(line);
-			}
-		}
+		reader.lines().forEach(line -> ret.add(line));
 		return ret;
 	}
 
