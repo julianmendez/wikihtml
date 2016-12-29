@@ -26,7 +26,7 @@ public class StyleGroupRenderer implements Renderer {
 	private final MultiRenderer renderer;
 
 	public StyleGroupRenderer() {
-		List<Renderer> list = new ArrayList<Renderer>();
+		List<Renderer> list = new ArrayList<>();
 		final String a = WikiCons.APOSTROPHE;
 		list.add(new StyleRenderer(a + a + a + a + a, HTMLTag.ITALICS_BOLD_START, HTMLTag.ITALICS_BOLD_END));
 
