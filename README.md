@@ -1,7 +1,7 @@
 # [WikiHTML](https://julianmendez.github.io/wikihtml/)
 
 [![Build Status](https://travis-ci.org/julianmendez/wikihtml.png?branch=master)](https://travis-ci.org/julianmendez/wikihtml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.tu-dresden.inf.lat.wikihtml/wikihtml/badge.svg)](http://search.maven.org/#search|ga|1|g%3A%22de.tu-dresden.inf.lat.wikihtml%22)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.tu-dresden.inf.lat.wikihtml/wikihtml/badge.svg)](https://search.maven.org/#search|ga|1|g%3A%22de.tu-dresden.inf.lat.wikihtml%22)
 
 
 **WikiHTML** is a Java library and executable standalone application that converts a document in wiki text format to an HTML document.
@@ -46,7 +46,7 @@ The application generates the HTML document with the original wiki markup source
 
 This could be useful, for example, when maintaining documentation of a project. The files can be easily edited using a text editor, but after processing them with this library, they can be viewed with a browser.
 
-When using only the wiki formatting, the produced document is an [XHTML 1.1](http://www.w3.org/TR/xhtml11/) document.
+When using only the wiki formatting, the produced document is an [XHTML 1.1](https://www.w3.org/TR/xhtml11/) document.
 
 
 #### Sections
@@ -181,8 +181,8 @@ The text can be formatted using apostrophes (') according to the following table
 #### Links
 
 Links can be marked with square backets ([ ]). For example:
-`[http://www.wikipedia.org Wikipedia]` renders [Wikipedia](http://www.wikipedia.org).
-If the brackets are omitted, the URI is shown directly. For example: `http://www.wikipedia.org` renders http://www.wikipedia.org .
+`[https://www.wikipedia.org Wikipedia]` renders [Wikipedia](https://www.wikipedia.org).
+If the brackets are omitted, the URI is shown directly. For example: `https://www.wikipedia.org` renders https://www.wikipedia.org .
 
 The double square brackets ([[ ]]) are rendered as local links.
 
@@ -307,9 +307,9 @@ and is translated to the following HTML document:
 
 end_wiki_text-->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
@@ -397,7 +397,7 @@ For example, all variables are processed by `...part.DateVariableRenderer`, but 
 
 ## Author
 
-[Julian Mendez](http://lat.inf.tu-dresden.de/~mendez/)
+[Julian Mendez](https://lat.inf.tu-dresden.de/~mendez/)
 
 
 ## Licenses
