@@ -57,10 +57,13 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>de.tu-dresden.inf.lat.util</groupId>
+			<artifactId>util-map</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -72,9 +75,30 @@
 		<relativePath></relativePath>
 	</parent>
 
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>de.tu-dresden.inf.lat.util</groupId>
+				<artifactId>util-map</artifactId>
+				<version>${util.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<scope>test</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<util.version>0.1.0</util.version>
 
 		<mainClass>de.tudresden.inf.lat.wikihtml.main.Main</mainClass>
 		<inputFile>src/test/resources/example.text</inputFile>
@@ -82,6 +106,7 @@
 	</properties>
 
 	<build>
+
 		<pluginManagement>
 			<plugins>
 
@@ -96,6 +121,32 @@
 							<argument>${inputFile}</argument>
 							<argument>${outputFile}</argument>
 						</arguments>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<finalName>${project.artifactId}</finalName>
+						<appendAssemblyId>false</appendAssemblyId>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								<mainClass>${mainClass}</mainClass>
+							</manifest>
+						</archive>
+						<descriptorRefs>
+							<descriptorRef>jar-with-dependencies</descriptorRef>
+						</descriptorRefs>
 					</configuration>
 				</plugin>
 
@@ -127,6 +178,11 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
 			</plugin>
 
 			<plugin>

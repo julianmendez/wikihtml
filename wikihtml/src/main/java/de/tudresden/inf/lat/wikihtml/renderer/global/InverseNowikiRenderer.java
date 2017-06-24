@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
+import de.tudresden.inf.lat.util.map.OptMap;
+import de.tudresden.inf.lat.util.map.OptMapImpl;
 import de.tudresden.inf.lat.wikihtml.common.HTMLTag;
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
@@ -26,7 +27,7 @@ import de.tudresden.inf.lat.wikihtml.renderer.common.TokenType;
  * 
  */
 public class InverseNowikiRenderer implements Renderer {
-	private final Map<String, String> map = new HashMap<>();
+	private final OptMap<String, String> map = new OptMapImpl<>(new HashMap<>());
 
 	public InverseNowikiRenderer() {
 		put(WikiCons.NUMBER_SIGN_U, WikiCons.NUMBER_SIGN);
@@ -66,7 +67,7 @@ public class InverseNowikiRenderer implements Renderer {
 		String ret = text;
 
 		for (String key : this.map.keySet()) {
-			ret = ret.replaceAll(key, this.map.get(key));
+			ret = ret.replaceAll(key, this.map.get(key).get());
 		}
 
 		boolean simplifying = true;

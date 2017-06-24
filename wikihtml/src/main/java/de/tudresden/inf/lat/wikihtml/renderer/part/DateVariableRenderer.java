@@ -9,14 +9,14 @@ package de.tudresden.inf.lat.wikihtml.renderer.part;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.TimeZone;
 import java.util.TreeMap;
 
+import de.tudresden.inf.lat.util.map.OptMap;
+import de.tudresden.inf.lat.util.map.OptMapImpl;
 import de.tudresden.inf.lat.wikihtml.common.WikiCons;
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.Renderer;
@@ -52,10 +52,10 @@ public class DateVariableRenderer implements Renderer {
 			+ WikiCons.VAR_END;
 	private static final String Z_LOCALDOW_ID = WikiCons.VAR_BEGIN + LOCAL + VarName.DOW.toString() + WikiCons.VAR_END;
 
-	private final Map<String, SimpleDateFormat> translationMap;
+	private final OptMap<String, SimpleDateFormat> translationMap;
 
 	public DateVariableRenderer() {
-		Map<String, SimpleDateFormat> map = new TreeMap<>();
+		OptMap<String, SimpleDateFormat> map = new OptMapImpl<>(new TreeMap<>());
 		put(map, VarName.DAY, DF_DAY);
 		put(map, VarName.DAY2, DF_DAY2);
 		put(map, VarName.DAYNAME, DF_DAYNAME);
@@ -67,7 +67,7 @@ public class DateVariableRenderer implements Renderer {
 		put(map, VarName.TIMESTAMP, DF_TIMESTAMP);
 		put(map, VarName.WEEK, DF_WEEK);
 		put(map, VarName.YEAR, DF_YEAR);
-		this.translationMap = Collections.unmodifiableMap(map);
+		this.translationMap = map;
 	}
 
 	private int getCurrentDayOfWeek(Date date) {
@@ -95,7 +95,7 @@ public class DateVariableRenderer implements Renderer {
 				&& (token.getWikiText().toLowerCase().indexOf(WikiCons.VAR_BEGIN) != -1);
 	}
 
-	private void put(Map<String, SimpleDateFormat> map, VarName varName, String dateFormatStr) {
+	private void put(OptMap<String, SimpleDateFormat> map, VarName varName, String dateFormatStr) {
 
 		map.put(WikiCons.VAR_BEGIN + LOCAL + varName.toString() + WikiCons.VAR_END,
 				new SimpleDateFormat(dateFormatStr));
@@ -120,7 +120,7 @@ public class DateVariableRenderer implements Renderer {
 		if (isApplicable(token)) {
 			String currentText = token.getWikiText();
 			for (String key : this.translationMap.keySet()) {
-				currentText = replaceAll(currentText, key, this.translationMap.get(key).format(date));
+				currentText = replaceAll(currentText, key, this.translationMap.get(key).get().format(date));
 			}
 			currentText = replaceAll(currentText, Z_CURRENTDOW_ID, "" + getCurrentDayOfWeek(date));
 			currentText = replaceAll(currentText, Z_LOCALDOW_ID, "" + getLocalDayOfWeek(date));
