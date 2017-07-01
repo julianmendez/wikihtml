@@ -1,7 +1,3 @@
----
-title: Releases
-theme: jekyll-theme-tactile
----
 
 
 ## Release Notes
