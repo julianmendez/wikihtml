@@ -1,5 +1,6 @@
 ---
-title: Release Notes
+title: Releases
+theme: jekyll-theme-tactile
 ---
 
 
