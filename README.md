@@ -397,7 +397,7 @@ For example, all variables are processed by `...part.DateVariableRenderer`, but 
 
 ## Author
 
-[Julian Mendez](https://lat.inf.tu-dresden.de/~mendez/)
+[Julian Mendez](https://julianmendez.github.io)
 
 
 ## Licenses
