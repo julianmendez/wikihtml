@@ -407,7 +407,7 @@ For example, all variables are processed by `...part.DateVariableRenderer`, but 
 
 ## Release notes
 
-See [release notes](https://github.com/julianmendez/wikihtml/blob/master/RELEASE-NOTES.md).
+See [release notes](https://julianmendez.github.io/wikihtml/RELEASE-NOTES.html).
 
 
 ## Contact
