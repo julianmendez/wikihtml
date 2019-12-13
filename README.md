@@ -5,7 +5,6 @@
 [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 [![license](https://img.shields.io/badge/license-LGPL%203.0-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.txt)
 
-
 **WikiHTML** is a Java library and executable standalone application that converts a document in wiki text format to an HTML document.
 
 
@@ -22,6 +21,7 @@
   <version>0.1.0</version>
 </dependency>
 ```
+
 
 ## Use
 
@@ -44,7 +44,7 @@ to just update an HTML file with embedded wiki text.
 
 Wiki markup, also wikitext or wikicode, is a markup language for wiki-based pages. It is a simplified human-friendly substitute of HTML. This library reads text written in this markup language and produces an HTML document. There are several "dialects" of wiki markup. This library implements a subset of the language used by the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) software.
 
-The application generates the HTML document with the original wiki markup source code inside. Technically, the source code will be between: `<!--begin_wiki_text` and `end_wiki_text-->`. This allows to update an HTML file using the source in the same file. 
+The application generates the HTML document with the original wiki markup source code inside. Technically, the source code will be between: `<!--begin_wiki_text` and `end_wiki_text-->`. This allows to update an HTML file using the source in the same file.
 
 This could be useful, for example, when maintaining documentation of a project. The files can be easily edited using a text editor, but after processing them with this library, they can be viewed with a browser.
 
@@ -122,7 +122,6 @@ produces:
 ```
 
 
-
 #### Unordered lists
 
 Items in a list are marked with asterisks (*) at the beginning of the line. A subitem is marked with more asterisks. For example:
@@ -151,11 +150,17 @@ is rendered as
 Numbered items are marked with hash signs (#) at the beginning of the line. A subitem is marked with more hash signs. For example:
 
 ```
+
 # item 1
+
 # item 2
+
 ## item 2.1
+
 ## item 2.2
+
 ### item 2.2.1
+
 # item 3
 ```
 
@@ -175,9 +180,9 @@ The text can be formatted using apostrophes (') according to the following table
 
 | wiki markup                   | HTML                    |
 |:------------------------------|:------------------------|
-| `''italics''`                 | *italics*               | 
-| `'''bold'''`                  | **bold**                | 
-| `'''''bold italics'''''`      | ***bold italics***      | 
+| `''italics''`                 | *italics*               |
+| `'''bold'''`                  | **bold**                |
+| `'''''bold italics'''''`      | ***bold italics***      |
 
 
 #### Links
@@ -210,7 +215,7 @@ produces the following table:
 <tr><td>3</td><td>5</td><td>7</td></tr>
 <tr><td>8</td><td>1</td><td>6</td></tr>
 </table>
- 
+
 (without the white and gray alternation of lines)
 
 The following wiki text is not implemented in MediaWiki, but it also produces the same table:
@@ -258,20 +263,20 @@ The following MediaWiki variables are implemented:
 
 | name                              | example          | meaning                                                                |
 |:----------------------------------|:-----------------|:-----------------------------------------------------------------------|
-|<tt>&#x7B;{CURRENTDAY}}</tt>       |	`1`              | Displays the current day in numeric form.                              |
-|<tt>&#x7B;{CURRENTDAY2}}</tt>      |	`01`            | Same as <tt>&#x7B;{CURRENTDAY}}</tt>, but with leading zero (01 .. 31). |
-|<tt>&#x7B;{CURRENTDAYNAME}}</tt>   |	`Friday`         | Name of the day in the language of the project or English.             |
-|<tt>&#x7B;{CURRENTDOW}}</tt>       |	`5`  | Same as <tt>&#x7B;{CURRENTDAYNAME}}</tt>, but as a number (0=Sunday, 1=Monday...). |
-|<tt>&#x7B;{CURRENTMONTH}}</tt>     |	`01`             | The number 01 .. 12 of the month.                                      |
+|<tt>&#x7B;{CURRENTDAY}}</tt>       |    `1`              | Displays the current day in numeric form.                              |
+|<tt>&#x7B;{CURRENTDAY2}}</tt>      |    `01`            | Same as <tt>&#x7B;{CURRENTDAY}}</tt>, but with leading zero (01 .. 31). |
+|<tt>&#x7B;{CURRENTDAYNAME}}</tt>   |    `Friday`         | Name of the day in the language of the project or English.             |
+|<tt>&#x7B;{CURRENTDOW}}</tt>       |    `5`  | Same as <tt>&#x7B;{CURRENTDAYNAME}}</tt>, but as a number (0=Sunday, 1=Monday...). |
+|<tt>&#x7B;{CURRENTMONTH}}</tt>     |    `01`             | The number 01 .. 12 of the month.                                      |
 |<tt>&#x7B;{CURRENTMONTHABBREV}}</tt>| `Jan`   | Same as <tt>&#x7B;{CURRENTMONTH}}</tt>, but in abbreviated form as Jan .. Dec. |
 |<tt>&#x7B;{CURRENTMONTHNAME}}</tt> |`January` | Same as <tt>&#x7B;{CURRENTMONTH}}</tt>, but in named form January .. December. |
-|<tt>&#x7B;{CURRENTTIME}}</tt>      |	`16:03`          | The current time (00:00 .. 23:59).                                     |
-|<tt>&#x7B;{CURRENTHOUR}}</tt>      |	`16`             | The current hour (00 .. 23).                                           |
-|<tt>&#x7B;{CURRENTWEEK}}</tt>      |	`1`        | Number of the current week (1-53) according to ISO 8601 with no leading zero.|
-|<tt>&#x7B;{CURRENTYEAR}}</tt>      |	`2016`           | Returns the current year.                                              |
-|<tt>&#x7B;{CURRENTTIMESTAMP}}</tt> |	`20160101160345` | ISO 8601 time stamp                                                    |
+|<tt>&#x7B;{CURRENTTIME}}</tt>      |    `16:03`          | The current time (00:00 .. 23:59).                                     |
+|<tt>&#x7B;{CURRENTHOUR}}</tt>      |    `16`             | The current hour (00 .. 23).                                           |
+|<tt>&#x7B;{CURRENTWEEK}}</tt>      |    `1`        | Number of the current week (1-53) according to ISO 8601 with no leading zero.|
+|<tt>&#x7B;{CURRENTYEAR}}</tt>      |    `2016`           | Returns the current year.                                              |
+|<tt>&#x7B;{CURRENTTIMESTAMP}}</tt> |    `20160101160345` | ISO 8601 time stamp                                                    |
 
-In addition, the <tt>&#x7B;{LOCAL...}}</tt> variables are also implemented:<tt>&#x7B;{LOCALDAY}}</tt>, <tt>&#x7B;{LOCALDAY2}}</tt>, ... , <tt>&#x7B;{LOCALTIMESTAMP}}</tt>. For example, in UTC+1 <tt>&#x7B;{CURRENTTIMESTAMP}}</tt> returns `20160101160345`, while <tt>&#x7B;{LOCALTIMESTAMP}}</tt> returns `20160101170345`.  	
+In addition, the <tt>&#x7B;{LOCAL...}}</tt> variables are also implemented:<tt>&#x7B;{LOCALDAY}}</tt>, <tt>&#x7B;{LOCALDAY2}}</tt>, ... , <tt>&#x7B;{LOCALTIMESTAMP}}</tt>. For example, in UTC+1 <tt>&#x7B;{CURRENTTIMESTAMP}}</tt> returns `20160101160345`, while <tt>&#x7B;{LOCALTIMESTAMP}}</tt> returns `20160101170345`.
 
 
 #### HTML
@@ -288,9 +293,13 @@ The file [mupuzzle.text](https://github.com/julianmendez/wikihtml/blob/master/wi
 == MIU system  ==
 (see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
 
+
 # ''x''I &rarr; ''x''IU
+
 # M''x'' &rarr; M''xx''
-# ''x''III''y'' &rarr; ''x''U''y'' 
+
+# ''x''III''y'' &rarr; ''x''U''y''
+
 # ''x''UU''y'' &rarr; ''xy''
 ```
 
@@ -302,9 +311,13 @@ and is translated to the following HTML document:
 == MIU system  ==
 (see [https://en.wikipedia.org/wiki/MU_puzzle MU puzzle])
 
+
 # ''x''I &rarr; ''x''IU
+
 # M''x'' &rarr; M''xx''
-# ''x''III''y'' &rarr; ''x''U''y'' 
+
+# ''x''III''y'' &rarr; ''x''U''y''
+
 # ''x''UU''y'' &rarr; ''xy''
 
 end_wiki_text-->
@@ -319,7 +332,6 @@ end_wiki_text-->
 <body>
   <div>
 
-
 <h2> MIU system  </h2>
  (see <a href="https://en.wikipedia.org/wiki/MU_puzzle">MU puzzle</a>)<br />
 
@@ -330,8 +342,6 @@ end_wiki_text-->
 <li> <i>x</i>UU<i>y</i> &rarr; <i>xy</i></li>
 </ol>
 <br />
-
-
 
   </div>
 </body>
@@ -389,12 +399,12 @@ where *NEW_VERSION* is the new version.
 
 ## Architecture
 
-The library reads a wiki text and creates a `WikiDocument`. 
+The library reads a wiki text and creates a `WikiDocument`.
 It extracts the wiki text from the given input and processes it line by line.
 
 Each line is transformed into a `ConversionToken`. Each token is processed by a pipeline of objects where each one is a `Renderer`. Each renderer (`-Renderer`) processes each conversion token producing a list of conversion tokens. These are the input for the next renderer, if any. Some renderers are parameterized and grouped (`-GroupRenderer`). Some renderers process whole lines (in package `...line`) and some renderers process pieces of lines (in package `...part`).
 
-For example, all variables are processed by `...part.DateVariableRenderer`, but the headings are processed by a group of renderers (`...line.HeadingGroupRenderer`) composed by 6 renderers (h1, h2, ..., h6), where each one is a `...line.HeadingRenderer`. 
+For example, all variables are processed by `...part.DateVariableRenderer`, but the headings are processed by a group of renderers (`...line.HeadingGroupRenderer`) composed by 6 renderers (h1, h2, ..., h6), where each one is a `...line.HeadingRenderer`.
 
 
 ## Author
@@ -415,6 +425,5 @@ See [release notes](https://julianmendez.github.io/wikihtml/RELEASE-NOTES.html).
 ## Contact
 
 In case you need more information, please contact @julianmendez .
-
 
 

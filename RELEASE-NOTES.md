@@ -1,12 +1,12 @@
 
 
+
 ## Release Notes
 
 | version | release date | Java |
 |:--------|:-------------|:----:|
 | v0.2.0  | (unreleased) | 8    |
 | v0.1.0  | 2015-12-21   | 7    |
-
 
 
 ### v0.2.0
