@@ -9,8 +9,8 @@ package de.tudresden.inf.lat.wikihtml.renderer.line;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.RenderedToken;
@@ -35,7 +35,7 @@ public class HorizontalLineGroupRendererTest {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n----", "\n<hr />\n"));
 		List<ConversionToken> output = renderer.render(token);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 	@Test
@@ -46,7 +46,7 @@ public class HorizontalLineGroupRendererTest {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new RenderedToken("\n- - -", "\n<hr />\n"));
 		List<ConversionToken> output = renderer.render(token);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 }

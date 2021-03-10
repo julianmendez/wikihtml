@@ -9,8 +9,8 @@ package de.tudresden.inf.lat.wikihtml.renderer.part;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.RenderedToken;
@@ -63,7 +63,7 @@ public class StyleGroupRendererTest {
 		expected.add(new RenderedToken("'''", "</b>"));
 		expected.add(new WikiLinePartToken("."));
 		List<ConversionToken> output = renderer.render(token);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 	private void tryText(String wikiText, String wikiMarkup, String beforeText, String styleStart, String text,
@@ -77,7 +77,7 @@ public class StyleGroupRendererTest {
 		expected.add(new RenderedToken(wikiMarkup, styleEnd));
 		expected.add(new WikiLinePartToken(afterText));
 		List<ConversionToken> output = renderer.render(token);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 }

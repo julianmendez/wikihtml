@@ -9,8 +9,8 @@ package de.tudresden.inf.lat.wikihtml.renderer.global;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.Renderer;
@@ -30,7 +30,7 @@ public class NowikiRendererTest {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken("&#x0027;&#x0027;&#x0027;text with ignored format&#x0027;&#x0027;&#x0027;"));
 		List<ConversionToken> output = renderer.render(input);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class NowikiRendererTest {
 		output.addAll(renderer.render(input1));
 		output.addAll(renderer.render(input2));
 		output.addAll(renderer.render(input3));
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class NowikiRendererTest {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken("text with spaces\nand new lines\n as well"));
 		List<ConversionToken> output = renderer.render(input);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class NowikiRendererTest {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLineToken("text with spaces"));
 		List<ConversionToken> output = renderer.render(input);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 }

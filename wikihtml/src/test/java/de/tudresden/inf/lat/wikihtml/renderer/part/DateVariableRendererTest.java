@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import de.tudresden.inf.lat.wikihtml.renderer.common.ConversionToken;
 import de.tudresden.inf.lat.wikihtml.renderer.common.WikiLinePartToken;
@@ -96,7 +96,7 @@ public class DateVariableRendererTest {
 		List<ConversionToken> expected = new ArrayList<>();
 		expected.add(new WikiLinePartToken(prefix + expectedResult + suffix));
 		List<ConversionToken> output = renderer.render(token, date20041103195347);
-		Assert.assertEquals(expected, output);
+		Assertions.assertEquals(expected, output);
 	}
 
 }
