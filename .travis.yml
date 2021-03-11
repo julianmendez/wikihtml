@@ -16,4 +16,7 @@ jdk:
 install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=false -B -V
 
+after_success:
+  - cd wikihtml ; mvn clean cobertura:cobertura coveralls:report
+
 
