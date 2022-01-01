@@ -71,7 +71,7 @@
 	<parent>
 		<groupId>de.tu-dresden.inf.lat</groupId>
 		<artifactId>lat-parent</artifactId>
-		<version>0.1.4</version>
+		<version>0.1.5</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -82,19 +82,6 @@
 				<groupId>de.tu-dresden.inf.lat.util</groupId>
 				<artifactId>util-map</artifactId>
 				<version>${util.version}</version>
-			</dependency>
-
-			<dependency>
-				<!--
-				JUnit 5
-				[[https://junit.org/junit5]]
-				[[https://github.com/junit-team/junit5]]
-				[[https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api]]
-				-->
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-api</artifactId>
-				<version>5.7.1</version>
-				<scope>test</scope>
 			</dependency>
 
 		</dependencies>
